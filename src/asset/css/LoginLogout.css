@@ -1,0 +1,76 @@
+.sign__padding_top{
+    padding-top: 40px;
+}
+.sign__form{
+    padding: 40px;
+    background-color: #16151a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    position: relative;
+    width: 100%;
+    border: 1px solid #222227;
+}
+.sign__form_title a{
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+.sign__form_title a:hover{
+    color: #25a56a;
+}
+.sign__form_title{
+    display: flex;
+    justify-content: center;
+}
+.sign__icon {
+    margin-right: 8px;
+}
+.sign__title{
+    font-size: 18px;
+    font-weight: 500;
+}
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline{
+    border: 0px solid #fff !important;
+}
+.sign__form_input{
+    background-color: #222227 !important;
+    border-radius: 8px;
+    width: 100% !important;
+    margin-bottom: 20px !important;
+}
+.sign__form_input input{
+    color: #fff !important;
+}
+.sign__form_input .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+    border: 1px solid #222227 !important;
+    border-radius: 8px !important;
+}
+.sign__form_button{
+    width: 100% !important;
+    padding: 14px 10px !important;
+    background-color: #25a56a !important;
+    border-radius: 12px !important;
+}
+.css-sghohy-MuiButtonBase-root-MuiButton-root:hover{
+    background-color: #222227 !important;
+}
+.sign__text{
+    margin-top: 12px;
+}
+.sign__text span{
+    color: #fff;
+}
+.sign__text .sign__link{
+    color: #25a56a;
+    margin-left: 4px;
+    text-decoration: none;
+}
+.sign__text .sign__link:hover{
+    text-decoration: underline;
+}

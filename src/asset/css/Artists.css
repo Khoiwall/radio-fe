@@ -1,0 +1,185 @@
+.artists {
+    margin-top: 100px;
+}
+.artists__title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+.artists__title h1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    color: #fff;
+    font-size: 33px;
+    line-height: 140%;
+    margin-bottom: 0;
+    position: relative;
+}
+.artists__filter {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: #16151a;
+    position: relative;
+}
+.artists__filter:before {
+    content: "";
+    position: absolute;
+    display: block;
+    left: -15px;
+    right: -15px;
+    width: auto;
+    top: 0;
+    border-top: 1px solid #222227;
+    border-bottom: 1px solid #222227;
+    bottom: 0;
+    background-color: #16151a;
+}
+.artists__filter .input__search {
+    max-width: 220px !important;
+    min-width: auto !important;
+    margin-left: 0px;
+    margin-right: 30px;
+}
+.artists__filter .input__search input {
+    border-radius: 16px !important;
+}
+.artists__filter_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+.artist__select_country,
+.artist__select_genres {
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+}
+.artist__select_country .select__current,
+.artist__select_genres .select__current {
+    transition: color 0.2s;
+}
+.artist__select_country .select__current:hover,
+.artist__select_genres .select__current:hover {
+    color: #25a56a;
+}
+.artist__select_country .list__filter,
+.artist__select_genres .list__filter {
+    position: absolute;
+    top: 32px;
+    left: -4px;
+    background-color: #222227;
+    min-width: 180px;
+    border-radius: 10px;
+    padding: 8px 16px;
+}
+.artist__select_margin_right_32 {
+    margin-right: 32px;
+}
+.visibility_hidden {
+    visibility: hidden;
+}
+.visibility_visible {
+    visibility: visible;
+}
+.artist__select_country ul,
+.artist__select_genres ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.list__filter ul li {
+    padding: 8px 0px;
+    transition: color 0.2s;
+}
+.list__filter ul li:hover {
+    color: #25a56a !important;
+}
+.a__margin_top_16 {
+    margin-top: 16px;
+}
+.nrc__liked svg {
+    color: #25a56a;
+}
+.artists__btn_flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.artists__btn_margin {
+    margin-top: 30px;
+}
+.artists__btn_padidng {
+    padding: 12px 32px;
+}
+.artists__btn_background {
+    background-color: #25a56a;
+    border-radius: 16px;
+    transition: 0.2s;
+}
+.artists__btn_background:hover {
+    background-color: #222227;
+}
+.artists__btn_background:hover .artists__btn_text {
+    color: #25a56a !important;
+}
+.artists__btn {
+    cursor: pointer;
+}
+.artists__btn_text {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+/*media*/
+@media (min-width: 768px) {
+    .artists__filter {
+        padding: 0;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 30px;
+        height: 70px;
+    }
+    .artists__filter_wrap {
+        padding: 0;
+    }
+}
+@media (min-width: 1200px) {
+    .artists__filter {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        background-color: #fff;
+        border: none;
+    }
+}
+@media (min-width: 576px) {
+    .artists__filter:before {
+        left: -30px;
+        right: -29px;
+    }
+}
