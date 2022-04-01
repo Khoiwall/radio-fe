@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../asset/css/SideBar.css';
-import logo from "../../asset/image/logo.jpg";
 import {Link} from "react-router-dom";
 import Limitations from './Limitations';
 import MusicPlayer from './MusicPlayer';

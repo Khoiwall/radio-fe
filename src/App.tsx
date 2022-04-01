@@ -36,10 +36,10 @@ function App() {
       <Router>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container>
-            <Grid item xs={2}>
+            <Grid item xl={2} lg={2} md={3} sm={12} xs={12} className="mobile">
               <SideBar/>
             </Grid>
-            <Grid item xs={10} className="app__display_flex app__overflow_y">
+            <Grid item xl={10} lg={10} md={9} sm={12} xs={12} className="app__display_flex app__overflow_y">
               <Header/>
               <Navigation/>
               <Footer/>

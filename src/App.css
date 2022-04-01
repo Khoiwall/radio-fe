@@ -75,3 +75,9 @@
       max-width: 1240px !important; 
   }
 }
+
+@media (max-width: 900px) {
+  .mobile {
+    display: none;
+  }
+}

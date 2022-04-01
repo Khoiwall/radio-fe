@@ -178,3 +178,15 @@
 .sb__volume_min_width{
     min-width: 120px;
 }
+
+@media (max-width: 900px) {
+    .sb__sidebar {
+        opacity: 0; 
+        visibility: hidden;
+        /* top: 0px;
+        left: -250px; */
+        transform: translateX(-240px);
+        max-width: 230px;
+        transition: 0.2s;
+    }
+}
