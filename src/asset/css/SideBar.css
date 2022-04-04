@@ -179,14 +179,34 @@
     min-width: 120px;
 }
 
-@media (max-width: 900px) {
+@media (min-width: 900px) {
+    .sb__sidebar {
+        opacity: 1 !important; 
+        visibility: visible !important;
+        /* top: 0px;
+        left: -250px; */   
+        transform: translateX(0px) !important; 
+    }
+}
+
+@media (min-width: 600px) {
     .sb__sidebar {
         opacity: 0; 
         visibility: hidden;
         /* top: 0px;
         left: -250px; */
         transform: translateX(-240px);
-        max-width: 230px;
+        transition: 0.2s;
+    }
+}
+
+@media (min-width: 300px) {
+    .sb__sidebar {
+        opacity: 0; 
+        visibility: hidden;
+        /* top: 0px;
+        left: -250px; */
+        transform: translateX(-240px);
         transition: 0.2s;
     }
 }

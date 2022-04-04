@@ -10,6 +10,17 @@
     width: inherit;
     z-index: 105;
 }
+.header__mobile{
+    position: sticky;
+    top: 0px;
+    background-color: #16151a;
+    border-bottom: 1px solid #222227;
+    min-height: 70px;
+    width: inherit;
+    z-index: 105;
+    display: flex !important;
+    align-content: space-around;
+}
 .hd__nav__text a {
     font-size: 16px;
     color: #c0c0c0 !important;
@@ -139,4 +150,78 @@
 }
 .hd__margin_right_4 {
     margin-right: 4px;
+}
+.header__icon_menu{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    cursor: pointer;
+}
+.header__icon_menu svg{
+    font-size:30px;
+}
+.header__icon_menu:hover svg{
+    color: #25a56a;
+}
+/*mobile*/
+.header__mobile a{
+    color: #25a56a;
+    text-decoration: none;
+    display: flex;
+    justify-content:center;
+}
+.header__mobile_full_width{
+    width: 100%;
+}
+.header__mobile_margin_top_bottom_0{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+.header__mobile_margin_left_0{
+    margin-left: 0;
+}
+.header__mobile .css-mhc70k-MuiGrid-root{
+    align-items: center;
+    margin-top: 0px !important;
+}
+.sb__nav_mobile{
+    padding-top: 20px;
+    min-width: 180px;
+    border-bottom: 1px solid #222227;
+    overflow-y: auto;
+    background: #111;
+    height: 100%;
+}
+@media (min-width: 900px) {
+    .collapse:not(.show) {
+        display: flex;
+    }
+    .navbar-nav{
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 900px) {
+    .header__mobile {
+        display: none !important;
+    }
+    .header {
+        display: block !important;
+    }
+}
+
+@media (min-width: 100px) {
+    .header__mobile {
+        display: block;
+    }
+    .header {
+        display: none;
+    }
+
+    .header__mobile .collapse:not(.show) {
+        display: flex;
+    }
+    .header__mobile .navbar-nav{
+        flex-direction: column;
+    }
 }
