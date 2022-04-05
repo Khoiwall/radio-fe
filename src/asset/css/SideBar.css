@@ -27,6 +27,9 @@
     border-bottom: 1px solid #222227;
     overflow-y: auto;
 }
+.sb__text{
+    min-width: 100px;
+}
 .sb__text p{
     margin: 0px;
 }
