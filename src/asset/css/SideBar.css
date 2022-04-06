@@ -27,6 +27,9 @@
     border-bottom: 1px solid #222227;
     overflow-y: auto;
 }
+.sb__text{
+    min-width: 100px;
+}
 .sb__text p{
     margin: 0px;
 }
@@ -177,4 +180,36 @@
 /*width*/
 .sb__volume_min_width{
     min-width: 120px;
+}
+
+@media (min-width: 900px) {
+    .sb__sidebar {
+        opacity: 1 !important; 
+        visibility: visible !important;
+        /* top: 0px;
+        left: -250px; */   
+        transform: translateX(0px) !important; 
+    }
+}
+
+@media (min-width: 600px) {
+    .sb__sidebar {
+        opacity: 0; 
+        visibility: hidden;
+        /* top: 0px;
+        left: -250px; */
+        transform: translateX(-240px);
+        transition: 0.2s;
+    }
+}
+
+@media (min-width: 300px) {
+    .sb__sidebar {
+        opacity: 0; 
+        visibility: hidden;
+        /* top: 0px;
+        left: -250px; */
+        transform: translateX(-240px);
+        transition: 0.2s;
+    }
 }

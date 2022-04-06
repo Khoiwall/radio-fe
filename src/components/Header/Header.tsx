@@ -13,7 +13,6 @@ export default function ButtonAppBar() {
   const [textFind, setTextFind] = useState('');
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user);
-  console.log(user);
 
 
   const signOut = ()=>{
@@ -26,7 +25,7 @@ export default function ButtonAppBar() {
   },[user])
   return (
     <Navbar className="header" expand="lg">
-      <Container>
+      <Container className="header__fixed">
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link className="hd__nav__text">
