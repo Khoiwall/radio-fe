@@ -3,13 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchIcon from '@mui/icons-material/Search';
 import LoginIcon from '@mui/icons-material/Login';
 import MenuIcon from '@mui/icons-material/Menu';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
-import Button from '@mui/material/Button';
 import HeaderMobileComponent from './HeaderMobileComponent';
+import SearchTextComponent from './SearchTextComponent'
 
 import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -22,6 +19,7 @@ const anchor = 'left';
 
 export default function ButtonAppBar() {
   const [textFind, setTextFind] = useState('');
+  const [openSearch, setOpenSearch] = useState('');
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user);
@@ -45,6 +43,11 @@ export default function ButtonAppBar() {
         setOpenMenu(open);
       };
 
+  const closeSearch = ()=>{
+    setOpenSearch('');
+  }
+
+
   useEffect(() => {
 
   }, [user])
@@ -63,7 +66,10 @@ export default function ButtonAppBar() {
                 </div>
               </Link>
               <div className="header__mobile_right_display_flex">
-                <div className="header__mobile_margin_left_0 header__mobile_search_icon">
+                <div 
+                  className="header__mobile_margin_left_0 header__mobile_search_icon"
+                  onClick={()=>{setOpenSearch('true')}}
+                >
                   <SearchIcon/>
                 </div>
                 {
@@ -116,6 +122,7 @@ export default function ButtonAppBar() {
             </div>
           </Nav>
         </Navbar.Collapse>
+        <SearchTextComponent openSearch={openSearch} closeSearch={closeSearch}/>
       </Container>
     </Navbar >
   );
