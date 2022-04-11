@@ -3,12 +3,14 @@ import './App.css';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import SideBar from './components/SideBar/SideBar';
-import { BrowserRouter as Router } from 'react-router-dom';
 import HeaderMobile from './components/Header/HeaderMobile';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import PlayerMobileLayout from './layout/PlayerMobile/PlayerMobileLayout';
 import Navigation from './navigation/Navigation';
 import axios from 'axios';
+
+import { BrowserRouter as Router } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userAction } from './redux/actions/user';
 import { Endpoints } from './api/Endpoints';
@@ -42,6 +44,7 @@ function App() {
             </Grid>
             <Grid item xl={10} lg={10} md={9} sm={12} xs={12} className="app__display_flex app__overflow_y">
               <Header />
+              <PlayerMobileLayout/>
               <HeaderMobile />
               <Navigation />
               <Footer />

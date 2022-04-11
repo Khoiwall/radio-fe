@@ -1,0 +1,67 @@
+.player__mobile{
+    width: 100%;
+}
+.player__mobile_fixed{
+    position: fixed;
+    bottom: 0px;
+    z-index: 103;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.player__mobile_bnt{
+    padding: 4px 8px;
+    background-color: #16151a;
+    border-radius: 12px 12px 0 0;
+    color: #fff;
+    border: 1px solid #222227;
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+.player__mobile_display_flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+.player__mobile_icon svg{
+    color: #25a56a;
+}
+.player__mobile__control{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background-color: #16151a;
+    z-index: 100;
+    padding: 20px 15px;
+    border-top: 1px solid #222227;
+}
+.player__mobile_control_flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.player__mobile_avatar{
+    margin-bottom: 8px;
+}
+.player__mobile_avatar img{
+    width: 90px;
+    height: 90px;
+    border-radius: 8px;
+}
+@media (min-width: 900px) {
+    .player__mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 100px) {
+    .player__mobile {
+        display: block;
+    }
+}
