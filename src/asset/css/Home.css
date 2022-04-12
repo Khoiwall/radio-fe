@@ -732,6 +732,9 @@
     height: auto;
     margin-right: 5px;
 }
+.carousel-control-next, .carousel-control-prev{
+    z-index: 150 !important;
+}
 /*slick*/
 .slick-arrow {
     display: none !important;

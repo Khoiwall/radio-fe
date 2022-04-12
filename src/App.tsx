@@ -16,6 +16,7 @@ import { userAction } from './redux/actions/user';
 import { Endpoints } from './api/Endpoints';
 import { io } from 'socket.io-client';
 
+
 function App() {
   const dispatch = useDispatch();
   const getUserByToken = async () => {
@@ -40,13 +41,13 @@ function App() {
         <Box sx={{ flexGrow: 1 }}>
           <Grid container>
             <Grid item xl={2} lg={2} md={3} sm={12} xs={12} className="mobile">
-              <SideBar />
+              <SideBar/>
             </Grid>
             <Grid item xl={10} lg={10} md={9} sm={12} xs={12} className="app__display_flex app__overflow_y">
               <Header />
               <PlayerMobileLayout/>
               <HeaderMobile />
-              <Navigation />
+              <Navigation/>
               <Footer />
             </Grid>
           </Grid>

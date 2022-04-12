@@ -4,7 +4,6 @@ interface UserType {
   }
   
   const musicRedux = (state = {}, action: UserType) => {
-    console.log(action.payload);
     switch (action.type) {
       case 'login':
         return action.payload;

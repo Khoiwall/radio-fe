@@ -29,7 +29,6 @@ function TopArtistsChild({
     dislikeArtist
 }: TopArtistsChild) {
     const user = useSelector((state: RootState) => state.user);
-    console.log(user)
 
     const likeArtistChild = async (artist: any) => {
         likeArtist(artist);

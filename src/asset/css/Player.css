@@ -4,7 +4,7 @@
 .player__mobile_fixed{
     position: fixed;
     bottom: 0px;
-    z-index: 103;
+    z-index: 203;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -32,13 +32,14 @@
     color: #25a56a;
 }
 .player__mobile__control{
-    position: absolute;
-    bottom: 0px;
+    position: fixed;
+    bottom: -350px;
     width: 100%;
     background-color: #16151a;
-    z-index: 100;
+    z-index: 200;
     padding: 20px 15px;
     border-top: 1px solid #222227;
+    transition: bottom 0.5s ease;
 }
 .player__mobile_control_flex{
     display: flex;
@@ -46,13 +47,19 @@
     justify-content: flex-start;
     align-items: center;
 }
-.player__mobile_avatar{
-    margin-bottom: 8px;
-}
 .player__mobile_avatar img{
     width: 90px;
     height: 90px;
     border-radius: 8px;
+}
+.player__mobile_flex_text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+.openPlayer{
+    bottom: 0px;
 }
 @media (min-width: 900px) {
     .player__mobile {

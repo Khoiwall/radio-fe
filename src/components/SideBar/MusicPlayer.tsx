@@ -13,6 +13,7 @@ import { RootState } from '../../redux/reducers';
 import { listen } from '../../redux/actions/listen';
 import { useDispatch } from 'react-redux';
 
+
 const player = new Audio();
 let playingMusicCurrent = false;
 let indexSong: number = parseInt(localStorage.getItem('indexSong') || '0');
@@ -20,7 +21,7 @@ let indexSong: number = parseInt(localStorage.getItem('indexSong') || '0');
 function MusicPlayer() {
     const dispatch = useDispatch();
     const [currentTime, setCurrentTime] = useState("00:00");
-    const [volume, setVolume] = useState<number>(50);
+    const [volume, setVolume] = useState<number>(70);
     const [mute, setMute] = useState<boolean>(false)
     const [percent, setPercent] = useState<number>(0);
     player.volume = mute === true ? 0 : volume / 100;
