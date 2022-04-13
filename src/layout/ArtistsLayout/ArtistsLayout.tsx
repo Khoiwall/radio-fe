@@ -30,7 +30,6 @@ function ArtistsLayout() {
     const fetchAllArtists = async () => {
         axios.get(`${Endpoints}/api/artist/get-artist-top`)
             .then((res) => {
-                setLoading(true);
                 setAllArtists(res.data);
             })
             .catch((err) => { console.log(err) })
@@ -48,7 +47,6 @@ function ArtistsLayout() {
                 }
             })
                 .then((res) => {
-                    setLoading(true);
                     setAllArtists(res.data.artists);
                 })
                 .catch((err) => { console.log(err) })
@@ -75,8 +73,9 @@ function ArtistsLayout() {
     }, [])
 
     useEffect(() => {
+        setLoading(true)
+        console.log(allArtists)
     }, [allArtists])
-
     return (
         <div className="artists container">
             <div className="artists__title">
