@@ -1,4 +1,4 @@
-import react, { useEffect } from 'react';
+import react, { useState, useEffect } from 'react';
 import './App.css';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -14,11 +14,14 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userAction } from './redux/actions/user';
 import { Endpoints } from './api/Endpoints';
+import {getWindowDimensions} from './util/getWindowDimensions';
 import { io } from 'socket.io-client';
 
 
 function App() {
   const dispatch = useDispatch();
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
   const getUserByToken = async () => {
     return axios.get(`${Endpoints}/api/user/get-user-by-token`, {
       headers: {
@@ -32,6 +35,15 @@ function App() {
   }
 
   useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
     getUserByToken()
   }, [])
 
@@ -41,13 +53,13 @@ function App() {
         <Box sx={{ flexGrow: 1 }}>
           <Grid container>
             <Grid item xl={2} lg={2} md={3} sm={12} xs={12} className="mobile">
-              <SideBar/>
+              <SideBar windowDimensions={windowDimensions}/>
             </Grid>
             <Grid item xl={10} lg={10} md={9} sm={12} xs={12} className="app__display_flex app__overflow_y">
               <Header />
-              <PlayerMobileLayout/>
+              <PlayerMobileLayout windowDimensions={windowDimensions}/>
               <HeaderMobile />
-              <Navigation/>
+              <Navigation />
               <Footer />
             </Grid>
           </Grid>

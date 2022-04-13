@@ -28,6 +28,7 @@ import { RootState } from '../../redux/reducers';
 import { userAction } from '../../redux/actions/user';
 import { io } from 'socket.io-client';
 import { useHistory } from "react-router-dom";
+import {settings,settingsArtist} from '../../util/slick';
 
 interface HomeType {
     allTrack: {
@@ -105,18 +106,6 @@ function HomeLayout({
     const sliderRef = React.useRef<Slider | null>(null);
     const sliderArtistRef = React.useRef<Slider | null>(null);
     const user = useSelector((state: RootState) => state.user);
-    const settings = {
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3
-    };
-    const settingsArtist = {
-        infinite: true,
-        speed: 500,
-        slidesToShow: 6,
-        slidesToScroll: 6
-    };
     const [allArtistsComponent, setAllArtistsComponent] = useState<{
         idArtists: string,
         name: string,
@@ -316,7 +305,7 @@ function HomeLayout({
                             {
                                 allNews.map((news, index) => {
                                     return (
-                                        <HotNewChild news={news}/>
+                                        <HotNewChild news={news} />
                                     )
                                 })
                             }

@@ -34,7 +34,7 @@ function NewReleasesChild({
         playAlbum(id);
     }
     return (
-        <Grid className="nrc__album" item xl={2} xs={6} md={8}>
+        <Grid className="nrc__album" item xl={2} lg={2} md={3} sm={4} xs={6}>
             <div className="nrc__album_cover">
                 <img src={Album.image} alt={Album.name} />
                 <div

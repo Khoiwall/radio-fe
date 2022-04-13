@@ -16,15 +16,20 @@ import { playMusic } from '../../redux/actions/playMusic';
 import { useDispatch } from 'react-redux';
 import Action from '../../components/SideBar/Action';
 
-// interface PlayerMobileType {
-//     player: HTMLAudioElement;
-// }
+interface PlayerMobileType {
+    windowDimensions: {
+        width: number;
+        height: number;
+    }
+}
 
 const player = new Audio();
 let playingMusicCurrent = false;
 let indexSong: number = parseInt(localStorage.getItem('indexSong') || '0');
 
-function PlayerMobile() {
+function PlayerMobile({
+    windowDimensions
+}: PlayerMobileType) {
     const dispatch = useDispatch();
     const [openPlayer, setOpenPlayer] = useState<string>('')
     const [currentTime, setCurrentTime] = useState("00:00");
@@ -176,95 +181,103 @@ function PlayerMobile() {
     }, [musicRedux])
 
     return (
-        <div className="player__mobile">
-            <div className="player__mobile_fixed">
-                <div className="player__mobile_bnt" onClick={() => { openPlayer === '' ? setOpenPlayer('openPlayer') : setOpenPlayer('') }}>
-                    <div className="player__mobile_display_flex">
-                        <div className="player__mobile_icon">
-                            <MusicNoteIcon />
-                        </div>
-                        <div className="player__mobile_text">
-                            Player
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className={'player__mobile__control ' + openPlayer}>
-                <div className="player__mobile_control_flex">
-                    <div className="player__mobile_avatar">
-                        <img src={musicPlayer.mainImg} alt="123" />
-                    </div>
-                    <div className="sb__music__content">
-                        <div className="sb__music__track">
-                            <div className="player__mobile_flex_text">
-                                <p className="sb__name_song sb__margin_none">{musicPlayer.nameSong}</p>
-                                <p className="sb__margin_none">
-                                    - {
-                                        musicPlayer.artists.map((artist, index) => {
-                                            return (
-                                                <>
-                                                    {
-                                                        index === 0 ?
-                                                            <span>{artist.nameArtists}</span>
-                                                            : <span> & {artist.nameArtists}</span>
+        <>
+            {
+                windowDimensions.width < 900 ?
+                    (
+                        <div className="player__mobile">
+                            <div className="player__mobile_fixed">
+                                <div className="player__mobile_bnt" onClick={() => { openPlayer === '' ? setOpenPlayer('openPlayer') : setOpenPlayer('') }}>
+                                    <div className="player__mobile_display_flex">
+                                        <div className="player__mobile_icon">
+                                            <MusicNoteIcon />
+                                        </div>
+                                        <div className="player__mobile_text">
+                                            Player
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={'player__mobile__control ' + openPlayer}>
+                                <div className="player__mobile_control_flex">
+                                    <div className="player__mobile_avatar">
+                                        <img src={musicPlayer.mainImg} alt="123" />
+                                    </div>
+                                    <div className="sb__music__content">
+                                        <div className="sb__music__track">
+                                            <div className="player__mobile_flex_text">
+                                                <p className="sb__name_song sb__margin_none">{musicPlayer.nameSong}</p>
+                                                <p className="sb__margin_none">
+                                                    - {
+                                                        musicPlayer.artists.map((artist, index) => {
+                                                            return (
+                                                                <>
+                                                                    {
+                                                                        index === 0 ?
+                                                                            <span>{artist.nameArtists}</span>
+                                                                            : <span> & {artist.nameArtists}</span>
+                                                                    }
+                                                                </>
+                                                            )
+                                                        })
                                                     }
-                                                </>
-                                            )
-                                        })
-                                    }
-                                </p>
-                            </div>
-                        </div>
-                        <div className="sb__music__control">
-                            <Action
-                                playPause={playPause}
-                                playSong={playSong}
-                                pauseSong={pauseSong}
-                                nextSong={nextSong}
-                                prevSong={prevSong}
-                            />
-                            <Slider
-                                size="small"
-                                value={percent}
-                                aria-label="Small"
-                                color="secondary"
-                                className="sb__color_green"
-                                onChange={handleChange}
-                            />
-                            <div className="sb__music__time">
-                                <div className="sb__flex_space_bewten">
-                                    <p className="sb__margin_none">{currentTime}</p>
-                                    <p className="sb__margin_none">{formatTimer(musicPlayer.duration)}</p>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="sb__music__control">
+                                            <Action
+                                                playPause={playPause}
+                                                playSong={playSong}
+                                                pauseSong={pauseSong}
+                                                nextSong={nextSong}
+                                                prevSong={prevSong}
+                                            />
+                                            <Slider
+                                                size="small"
+                                                value={percent}
+                                                aria-label="Small"
+                                                color="secondary"
+                                                className="sb__color_green"
+                                                onChange={handleChange}
+                                            />
+                                            <div className="sb__music__time">
+                                                <div className="sb__flex_space_bewten">
+                                                    <p className="sb__margin_none">{currentTime}</p>
+                                                    <p className="sb__margin_none">{formatTimer(musicPlayer.duration)}</p>
+                                                </div>
+                                            </div>
+                                            <div className="sb__action__display_flex">
+                                                <Stack className="sb__volume_min_width sb__margin_action" direction="row" sx={{ mb: 1 }} alignItems="center">
+                                                    {
+                                                        mute === false ?
+                                                            <VolumeUpIcon className="sb__cursor_pointer sb__volume_hover" onClick={() => { setMute(true) }} />
+                                                            :
+                                                            <VolumeOffIcon className="sb__cursor_pointer sb__volume_hover" onClick={() => { setMute(false) }} />
+                                                    }
+                                                    <Slider
+                                                        size="small"
+                                                        value={mute === true ? 0 : volume}
+                                                        aria-label="Volumne"
+                                                        className="sb__margin_left sb__color_green"
+                                                        color="secondary"
+                                                        onChange={handleVolume}
+                                                    />
+                                                </Stack>
+                                                <div className="sb__playlist">
+                                                    <Link to="/music/current-playlist">
+                                                        <QueueMusicIcon />
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="sb__action__display_flex">
-                                <Stack className="sb__volume_min_width sb__margin_action" direction="row" sx={{ mb: 1 }} alignItems="center">
-                                    {
-                                        mute === false ?
-                                            <VolumeUpIcon className="sb__cursor_pointer sb__volume_hover" onClick={() => { setMute(true) }} />
-                                            :
-                                            <VolumeOffIcon className="sb__cursor_pointer sb__volume_hover" onClick={() => { setMute(false) }} />
-                                    }
-                                    <Slider
-                                        size="small"
-                                        value={mute === true ? 0 : volume}
-                                        aria-label="Volumne"
-                                        className="sb__margin_left sb__color_green"
-                                        color="secondary"
-                                        onChange={handleVolume}
-                                    />
-                                </Stack>
-                                <div className="sb__playlist">
-                                    <Link to="/music/current-playlist">
-                                        <QueueMusicIcon />
-                                    </Link>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    )
+                    : null
+            }
+        </>
     )
 }
 
