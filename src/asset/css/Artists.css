@@ -154,6 +154,10 @@
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
+.btn__style {
+    margin: 0px;
+    background-color: #222
+}
 /*media*/
 @media (min-width: 768px) {
     .artists__filter {

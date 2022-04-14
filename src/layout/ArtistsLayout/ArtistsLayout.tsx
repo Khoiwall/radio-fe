@@ -12,7 +12,7 @@ import { Endpoints } from '../../api/Endpoints';
 
 function ArtistsLayout() {
     const [loading, setLoading] = useState<boolean>(false);
-    const [nation, setNational] = useState<string>('');
+    const [nation, setNational] = useState<string>('All Artists');
     const [loadMoreBtn, setLoadMoreBtn] = useState<boolean>(false);
     const [allArtists, setAllArtists] = useState<{
         idArtists: string,
@@ -54,16 +54,30 @@ function ArtistsLayout() {
     }
 
     const loadMore = async () => {
-        setLoadMoreBtn(true);
+        setLoadMoreBtn(false);
         await axios.get(`${Endpoints}/api/artist/get-artist-top/load-more`, {
             params: {
                 allArtists
             }
         })
             .then((res) => {
-                setLoadMoreBtn(false);
+                setLoadMoreBtn(true);
                 // allArtists.push(res.data.artists)
                 // setAllArtists(allArtists);
+            })
+            .catch((err) => { console.log(err) })
+    }
+
+    const searchArtist = async (textField: string) => {
+        setLoading(false)
+        await axios.get(`${Endpoints}/api/artist/search`, {
+            params: {
+                textField,
+                nation
+            }
+        })
+            .then((res) => {
+                setAllArtists(res.data.artists);
             })
             .catch((err) => { console.log(err) })
     }
@@ -83,6 +97,7 @@ function ArtistsLayout() {
             </div>
             <WrapArtistComponent
                 fetchArtistsCountry={fetchArtistsCountry}
+                searchArtist={searchArtist}
             />
             {
                 loading && allArtists.length !== 0 ?
