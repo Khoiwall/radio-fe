@@ -13,7 +13,9 @@ import { Endpoints } from '../../api/Endpoints';
 function ArtistsLayout() {
     const [loading, setLoading] = useState<boolean>(false);
     const [nation, setNational] = useState<string>('All Artists');
+    const [genre, setGenre] = useState<string>('All Genres');
     const [loadMoreBtn, setLoadMoreBtn] = useState<boolean>(false);
+    const [outOfArtist, setOutOfArtist] = useState<boolean>(false);
     const [allArtists, setAllArtists] = useState<{
         idArtists: string,
         name: string,
@@ -37,6 +39,7 @@ function ArtistsLayout() {
 
     const fetchArtistsCountry = async (_nation: string) => {
         setLoading(false)
+        setOutOfArtist(false)
         setNational(_nation);
         if (_nation === 'All Artists') {
             fetchAllArtists()
@@ -53,17 +56,44 @@ function ArtistsLayout() {
         }
     }
 
+    const fetchArtistsGenres= async (_genre: string) => {
+        setLoading(false)
+        setOutOfArtist(false)
+        setGenre(_genre);
+        if (genre === 'All Genres') {
+            fetchAllArtists()
+        } else {
+            await axios.get(`${Endpoints}/api/artist/search-by-genre`, {
+                params: {
+                    genre: _genre
+                }
+            })
+                .then((res) => {
+                    console.log(res.data)
+                    setAllArtists(res.data.artists);
+                })
+                .catch((err) => { console.log(err) })
+        }
+    }
+
     const loadMore = async () => {
-        setLoadMoreBtn(false);
+        setLoadMoreBtn(true);
         await axios.get(`${Endpoints}/api/artist/get-artist-top/load-more`, {
             params: {
-                allArtists
+                allArtists,
+                nation
             }
         })
             .then((res) => {
-                setLoadMoreBtn(true);
-                // allArtists.push(res.data.artists)
-                // setAllArtists(allArtists);
+                if (res.data.outOfArtist === false) {
+                    const tmpAllArtists = allArtists;
+                    tmpAllArtists.push(...res.data.artists);
+                    setLoadMoreBtn(false);
+                    setAllArtists(tmpAllArtists);
+                } else {
+                    setLoadMoreBtn(false);
+                    setOutOfArtist(true);
+                }
             })
             .catch((err) => { console.log(err) })
     }
@@ -88,8 +118,14 @@ function ArtistsLayout() {
 
     useEffect(() => {
         setLoading(true)
-        console.log(allArtists)
+        setLoadMoreBtn(false)
     }, [allArtists])
+
+    useEffect(() => {
+    }, [loadMoreBtn])
+
+    useEffect(() => {
+    }, [outOfArtist])
     return (
         <div className="artists container">
             <div className="artists__title">
@@ -98,6 +134,7 @@ function ArtistsLayout() {
             <WrapArtistComponent
                 fetchArtistsCountry={fetchArtistsCountry}
                 searchArtist={searchArtist}
+                fetchArtistsGenres={fetchArtistsGenres}
             />
             {
                 loading && allArtists.length !== 0 ?
@@ -107,17 +144,23 @@ function ArtistsLayout() {
                         />
                         {
                             loadMoreBtn === false ? (
-                                <div className="artists__btn_flex">
-                                    <div className="artists__btn_margin">
-                                        <div
-                                            className="artists__btn_padidng artists__btn_background artists__btn"
-                                            onClick={loadMore}
-                                        >
-                                            <span className="artists__btn_text">LOAD MORE</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            ) :(
+                                <>
+                                    {
+                                        outOfArtist === false ? (
+                                            <div className="artists__btn_flex">
+                                                <div className="artists__btn_margin">
+                                                    <div
+                                                        className="artists__btn_padidng artists__btn_background artists__btn"
+                                                        onClick={loadMore}
+                                                    >
+                                                        <span className="artists__btn_text">LOAD MORE</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ) : null
+                                    }
+                                </>
+                            ) : (
                                 <LoaddingArtistComponent />
                             )
                         }

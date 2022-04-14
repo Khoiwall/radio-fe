@@ -21,7 +21,7 @@ function LoaddingArtistComponent() {
                     {
                         loadingLoop().map(() => {
                             return (
-                                <Grid item xs={6} sm={4} md={3} lg={2}>
+                                <Grid item xl={2} lg={2} md={4} sm={4} xs={6}>
                                     <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
                                         <Skeleton width={190} height={171} />
                                     </SkeletonTheme>

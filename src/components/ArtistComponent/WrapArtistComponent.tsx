@@ -5,6 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 interface TypeWrapArtistComponent {
     fetchArtistsCountry: (nation: string) => void;
+    fetchArtistsGenres: (genre: string) => void;
     searchArtist: (textField: string) => void;
 }
 
@@ -12,11 +13,12 @@ const artistsCountry: string[] = [
     'All Artists', 'Việt Nam', 'USUK', 'Korean'
 ]
 const artistsGenres: string[] = [
-    'All Genres', 'Rock', 'EDM', 'Sad Song', '....'
+    'All Genres', 'Rock', 'EDM', 'Sad Song', 'Rap'
 ]
 
 function WrapArtistComponent({
     fetchArtistsCountry,
+    fetchArtistsGenres,
     searchArtist
 }: TypeWrapArtistComponent) {
     const [textField, setTextField] = useState('');
@@ -30,6 +32,10 @@ function WrapArtistComponent({
     const selectCountry = (item: string) => {
         setCountry(item);
         fetchArtistsCountry(item);
+    }
+    const selectGenre = (item: string) => {
+        setGenres(item);
+        fetchArtistsGenres(item);
     }
 
     const searchArtists = (e: any) => {
@@ -123,7 +129,7 @@ function WrapArtistComponent({
                             <ul>
                                 {artistsGenres.map((genres) => {
                                     return (
-                                        <li onClick={() => { setGenres(genres) }}>{genres}</li>
+                                        <li onClick={() => { selectGenre(genres) }}>{genres}</li>
                                     )
                                 })}
                             </ul>
