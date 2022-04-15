@@ -97,7 +97,7 @@ function Home() {
 
     const fecthAllAlbum = async () => {
         return axios.get(`${Endpoints}/api/album`)
-            .then((res) => { setAllAlbum(res.data); setIndex(index++) })
+            .then((res) => { setAllAlbum(res.data.album); setIndex(index++) })
             .catch((err) => { console.log(err) })
     }
 
