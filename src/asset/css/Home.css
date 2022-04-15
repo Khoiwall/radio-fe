@@ -131,7 +131,7 @@
 }
 .nrc__play_album {
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     display: flex;
     flex-direction: row;
     justify-content: center;

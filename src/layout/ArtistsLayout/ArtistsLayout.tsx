@@ -37,39 +37,21 @@ function ArtistsLayout() {
             .catch((err) => { console.log(err) })
     }
 
-    const fetchArtistsCountry = async (_nation: string) => {
+    const fetchArtistsCountryAndGenre = async (_nation: string, _genre: string) => {
         setLoading(false)
         setOutOfArtist(false)
         setNational(_nation);
-        if (_nation === 'All Artists') {
-            fetchAllArtists()
-        } else {
-            await axios.get(`${Endpoints}/api/artist/search-by-country`, {
-                params: {
-                    nation: _nation
-                }
-            })
-                .then((res) => {
-                    setAllArtists(res.data.artists);
-                })
-                .catch((err) => { console.log(err) })
-        }
-    }
-
-    const fetchArtistsGenres= async (_genre: string) => {
-        setLoading(false)
-        setOutOfArtist(false)
         setGenre(_genre);
-        if (genre === 'All Genres') {
+        if (_nation === 'All Artists' && _genre === 'All Genres') {
             fetchAllArtists()
         } else {
-            await axios.get(`${Endpoints}/api/artist/search-by-genre`, {
+            await axios.get(`${Endpoints}/api/artist/search-by-country-and-genre`, {
                 params: {
+                    nation: _nation,
                     genre: _genre
                 }
             })
                 .then((res) => {
-                    console.log(res.data)
                     setAllArtists(res.data.artists);
                 })
                 .catch((err) => { console.log(err) })
@@ -81,7 +63,8 @@ function ArtistsLayout() {
         await axios.get(`${Endpoints}/api/artist/get-artist-top/load-more`, {
             params: {
                 allArtists,
-                nation
+                nation,
+                genre
             }
         })
             .then((res) => {
@@ -103,7 +86,8 @@ function ArtistsLayout() {
         await axios.get(`${Endpoints}/api/artist/search`, {
             params: {
                 textField,
-                nation
+                nation,
+                genre
             }
         })
             .then((res) => {
@@ -132,9 +116,8 @@ function ArtistsLayout() {
                 <h1>Artists</h1>
             </div>
             <WrapArtistComponent
-                fetchArtistsCountry={fetchArtistsCountry}
+                fetchArtistsCountryAndGenre={fetchArtistsCountryAndGenre}
                 searchArtist={searchArtist}
-                fetchArtistsGenres={fetchArtistsGenres}
             />
             {
                 loading && allArtists.length !== 0 ?

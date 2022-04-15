@@ -4,8 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchIcon from '@mui/icons-material/Search';
 
 interface TypeWrapArtistComponent {
-    fetchArtistsCountry: (nation: string) => void;
-    fetchArtistsGenres: (genre: string) => void;
+    fetchArtistsCountryAndGenre: (nation: string, genre: string) => void;
     searchArtist: (textField: string) => void;
 }
 
@@ -13,12 +12,11 @@ const artistsCountry: string[] = [
     'All Artists', 'Việt Nam', 'USUK', 'Korean'
 ]
 const artistsGenres: string[] = [
-    'All Genres', 'Rock', 'EDM', 'Sad Song', 'Rap'
+    'All Genres', 'ROCK', 'EDM', 'RAP'
 ]
 
 function WrapArtistComponent({
-    fetchArtistsCountry,
-    fetchArtistsGenres,
+    fetchArtistsCountryAndGenre,
     searchArtist
 }: TypeWrapArtistComponent) {
     const [textField, setTextField] = useState('');
@@ -31,11 +29,11 @@ function WrapArtistComponent({
 
     const selectCountry = (item: string) => {
         setCountry(item);
-        fetchArtistsCountry(item);
+        fetchArtistsCountryAndGenre(item, genres);
     }
     const selectGenre = (item: string) => {
         setGenres(item);
-        fetchArtistsGenres(item);
+        fetchArtistsCountryAndGenre(country,item);
     }
 
     const searchArtists = (e: any) => {
