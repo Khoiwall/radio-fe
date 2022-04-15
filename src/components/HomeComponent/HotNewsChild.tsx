@@ -27,7 +27,7 @@ function HotNewsChild({
 
     let time2 = moment();
     return (
-        <Grid item xl={4} xs={6} md={12}>
+        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
             <div className="hnc__post">
                 <div className="hnc__post_img">
                     <img src={news.image} alt={news.nameNews} />

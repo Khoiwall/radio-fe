@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import Action from './Action';
 // import {Line} from 'rc-progress';
 import Slider from '@mui/material/Slider';
-import { formatTimer } from '../../util/timmer';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import Stack from '@mui/material/Stack';
 import QueueMusicIcon from '@mui/icons-material/QueueMusic';
+import { formatTimer } from '../../util/timmer';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers';
 import { listen } from '../../redux/actions/listen';
 import { useDispatch } from 'react-redux';
+
 
 const player = new Audio();
 let playingMusicCurrent = false;
@@ -20,7 +21,7 @@ let indexSong: number = parseInt(localStorage.getItem('indexSong') || '0');
 function MusicPlayer() {
     const dispatch = useDispatch();
     const [currentTime, setCurrentTime] = useState("00:00");
-    const [volume, setVolume] = useState<number>(50);
+    const [volume, setVolume] = useState<number>(70);
     const [mute, setMute] = useState<boolean>(false)
     const [percent, setPercent] = useState<number>(0);
     player.volume = mute === true ? 0 : volume / 100;

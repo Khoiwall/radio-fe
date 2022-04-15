@@ -102,19 +102,19 @@ function TopTrack({
             </div>
             <Box sx={{ width: '100%' }}>
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                    <Grid item xs={4}>
+                    <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
                         <div className="tt__main_title">
                             <h2>Viet Nam</h2>
                         </div>
                         <Charts tracks={chartTracksVN}/>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
                         <div className="tt__main_title">
                             <h2>US-UK</h2>
                         </div>
                         <Charts tracks={chartTracksUSUK}/>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xl={4} lg={4} md={6} sm={12} xs={12}>
                         <div className="tt__main_title">
                             <h2>Korea</h2>
                         </div>

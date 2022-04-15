@@ -3,21 +3,23 @@ import '../../asset/css/Artists.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchIcon from '@mui/icons-material/Search';
 
-interface TypeWrapArtistComponent{
-    fetchArtistsCountry: (nation:string) => void;
+interface TypeWrapArtistComponent {
+    fetchArtistsCountryAndGenre: (nation: string, genre: string) => void;
+    searchArtist: (textField: string) => void;
 }
 
 const artistsCountry: string[] = [
     'All Artists', 'Việt Nam', 'USUK', 'Korean'
 ]
 const artistsGenres: string[] = [
-    'All Genres', 'Rock', 'EDM', 'Sad Song', '....'
+    'All Genres', 'ROCK', 'EDM', 'RAP'
 ]
 
 function WrapArtistComponent({
-    fetchArtistsCountry
-}:TypeWrapArtistComponent) {
-    const [textFind, setTextFind] = useState('');
+    fetchArtistsCountryAndGenre,
+    searchArtist
+}: TypeWrapArtistComponent) {
+    const [textField, setTextField] = useState('');
     const [filterCountry, setFilterCountry] = useState<boolean>(false);
     const [filterGenres, setFilterGenres] = useState<boolean>(false);
     const [country, setCountry] = useState<string>('All Artists');
@@ -25,9 +27,18 @@ function WrapArtistComponent({
     const artistCountry = useRef<any>(null);
     const artistGenres = useRef<any>(null);
 
-    const selectCountry = (item:string) =>{
+    const selectCountry = (item: string) => {
         setCountry(item);
-        fetchArtistsCountry(item);
+        fetchArtistsCountryAndGenre(item, genres);
+    }
+    const selectGenre = (item: string) => {
+        setGenres(item);
+        fetchArtistsCountryAndGenre(country,item);
+    }
+
+    const searchArtists = (e: any) => {
+        e.preventDefault();
+        searchArtist(textField)
     }
 
     useEffect(() => {
@@ -68,14 +79,16 @@ function WrapArtistComponent({
         <div className="artists__content">
             <div className="artists__filter">
                 <div className="input__search">
-                    <input type="search"
-                        className="form-control rounded"
-                        placeholder="Search..."
-                        aria-label="Search"
-                        aria-describedby="search-addon"
-                        onChange={(e) => { setTextFind(e.target.value) }}
-                    />
-                    <SearchIcon className="hd__icon__search" />
+                    <form onSubmit={searchArtists}>
+                        <input type="search"
+                            className="form-control rounded"
+                            placeholder="Search..."
+                            aria-label="Search"
+                            aria-describedby="search-addon"
+                            onChange={(e) => { setTextField(e.target.value) }}
+                        />
+                        <SearchIcon className="hd__icon__search" onClick={searchArtists}/>
+                    </form>
                 </div>
                 <div className="artists__filter_wrap">
                     <div
@@ -93,7 +106,7 @@ function WrapArtistComponent({
                             <ul>
                                 {artistsCountry.map((item) => {
                                     return (
-                                        <li onClick={()=>{selectCountry(item)}}>{item}</li>
+                                        <li onClick={() => { selectCountry(item) }}>{item}</li>
                                     )
                                 })}
                             </ul>
@@ -114,7 +127,7 @@ function WrapArtistComponent({
                             <ul>
                                 {artistsGenres.map((genres) => {
                                     return (
-                                        <li onClick={() => { setGenres(genres) }}>{genres}</li>
+                                        <li onClick={() => { selectGenre(genres) }}>{genres}</li>
                                     )
                                 })}
                             </ul>

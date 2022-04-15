@@ -97,7 +97,7 @@ function ArtistComponent({
                     {
                         allArtistsComponent.map((artist, index) => {
                             return (
-                                <Grid item xs={6} sm={4} md={3} lg={2}>
+                                <Grid item xl={2} lg={2} md={4} sm={4} xs={6} >
                                     <div className="tac__cover_artist">
                                         <div className="tac__artist">
                                             <img src={artist.image} alt={artist.stageName} />
