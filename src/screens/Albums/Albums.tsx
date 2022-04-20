@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AlbumLayout from '../../layout/AlbumLayout/AlbumLayout';
-import WrapAlbumComponent from '../../components/AlbumComponent/WrapAlbumComponent';
+import WrapAlbumLoadingComponent from '../../components/AlbumComponent/WrapAlbumLoadingComponent';
 import axios from 'axios';
 
 import { Endpoints } from '../../api/Endpoints';
@@ -47,7 +47,7 @@ function Albums() {
                         <div className="album__title">
                             <h1>Album</h1>
                         </div>
-                        <WrapAlbumComponent />
+                        <WrapAlbumLoadingComponent />
                     </div>
             }
         </>

@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux';
 import { album } from '../../redux/actions/playAlbum';
 import { listen } from '../../redux/actions/listen';
 
-interface AlbumType{
+interface AlbumType {
     allTrack: {
         idTrack: string,
         nameSong: string,
@@ -43,6 +43,8 @@ function AlbumLayout({
     const [loading, setLoading] = useState<boolean>(false);
     const [loadMoreBtn, setLoadMoreBtn] = useState<boolean>(false);
     const [outOfArtist, setOutOfArtist] = useState<boolean>(false);
+    const [nation, setNational] = useState<string>('All Country');
+    const [genre, setGenre] = useState<string>('All Genres');
     const [allAlbum, setAllAlbum] = useState<
         {
             idAlbum: string,
@@ -63,11 +65,35 @@ function AlbumLayout({
             .catch((err) => { console.log(err) })
     }
 
+    const fecthAllAlbumCountryAndGenre = async (_nation: string, _genre: string) => {
+        setLoading(false)
+        setOutOfArtist(false)
+        setNational(_nation);
+        setGenre(_genre);
+        if (_nation === 'All Country' && _genre === 'All Genres') {
+            fecthAllAlbum()
+        } else {
+            await axios.get(`${Endpoints}/api/album/search-by-coutry-and-genres`, {
+                params: {
+                    nation: _nation,
+                    genre: _genre,
+                }
+            })
+                .then((res) => {
+                    console.log(res.data);
+                    setAllAlbum(res.data.albums);
+                })
+                .catch((err) => { console.log(err) })
+        }
+    }
+
     const loadMore = async () => {
         setLoadMoreBtn(true);
         await axios.get(`${Endpoints}/api/album/get-album/load-more`, {
             params: {
                 allAlbum,
+                nation,
+                genre
             }
         })
             .then((res) => {
@@ -80,6 +106,22 @@ function AlbumLayout({
                     setLoadMoreBtn(false);
                     setOutOfArtist(true);
                 }
+            })
+            .catch((err) => { console.log(err) })
+    }
+
+    const searchAlbum = async (textField: string) => {
+        setLoading(false)
+        await axios.get(`${Endpoints}/api/album/search`, {
+            params: {
+                textField,
+                nation,
+                genre
+            }
+        })
+            .then((res) => {
+                console.log(res.data)
+                setAllAlbum(res.data.albums);
             })
             .catch((err) => { console.log(err) })
     }
@@ -98,7 +140,6 @@ function AlbumLayout({
 
     useEffect(() => {
         fecthAllAlbum()
-        setLoading(true)
     }, [])
 
     useEffect(() => {
@@ -110,7 +151,10 @@ function AlbumLayout({
             <div className="album__title">
                 <h1>Album</h1>
             </div>
-            <WrapAlbumComponent />
+            <WrapAlbumComponent
+                fecthAllAlbumCountryAndGenre={fecthAllAlbumCountryAndGenre}
+                searchAlbum={searchAlbum}
+            />
             {
                 loading && allAlbum.length !== 0 ?
                     <>
