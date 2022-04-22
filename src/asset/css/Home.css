@@ -1,8 +1,7 @@
 .home{
-    margin-top: 100px;
+    margin-top: 32px;
 }
 .home .slide .banner__background_image {
-    min-width: 1180px;
     min-height: 460px;
     margin: 12px auto;
     border-radius: 8px;
@@ -132,7 +131,7 @@
 }
 .nrc__play_album {
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -285,8 +284,7 @@
     opacity: 0.8;
 }
 .uec__cover_event {
-    margin-right: 30px;
-    width: 373.333px !important;
+    padding: 0px 12px;
     min-height: 1px;
 }
 .uec__event_date {
@@ -478,7 +476,7 @@
     margin-bottom: 8px !important;
 }
 .tac__cover_artist {
-    width: 189.33px !important;
+    padding: 0px 4px;
     min-height: 1px;
 }
 .tac__artist {
@@ -578,6 +576,7 @@
     align-items: flex-start;
     margin-left: 15px;
     margin-right: auto;
+    max-width: 120px;
 }
 .charts__track_title h4{
     display: block;
@@ -732,6 +731,9 @@
     height: auto;
     margin-right: 5px;
 }
+.carousel-control-next, .carousel-control-prev{
+    z-index: 150 !important;
+}
 /*slick*/
 .slick-arrow {
     display: none !important;
@@ -744,5 +746,20 @@
     .main__title {
         margin-top: 70px;
         margin-bottom: 0;
+    }
+}
+@media (max-width: 600px) {
+    .charts__track_title{
+        max-width: 80px;
+    }
+}
+@media (max-width: 900px) {
+    .input__search{
+        margin: 0px;
+    }
+}
+@media (max-width: 350px) {
+    .input__search{
+        min-width: 50px;
     }
 }

@@ -3,44 +3,21 @@ import '../../asset/css/Artists.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchIcon from '@mui/icons-material/Search';
 
-interface TypeWrapArtistComponent {
-    fetchArtistsCountryAndGenre: (nation: string, genre: string) => void;
-    searchArtist: (textField: string) => void;
-}
-
-const artistsCountry: string[] = [
-    'All Artists', 'Việt Nam', 'USUK', 'Korean'
+const albumCountry: string[] = [
+    'All Country', 'Việt Nam', 'USUK', 'Korean'
 ]
-const artistsGenres: string[] = [
+const albumGenres: string[] = [
     'All Genres', 'ROCK', 'EDM', 'RAP'
 ]
 
-function WrapArtistComponent({
-    fetchArtistsCountryAndGenre,
-    searchArtist
-}: TypeWrapArtistComponent) {
+function WrapAlbumComponent() {
     const [textField, setTextField] = useState('');
     const [filterCountry, setFilterCountry] = useState<boolean>(false);
     const [filterGenres, setFilterGenres] = useState<boolean>(false);
-    const [country, setCountry] = useState<string>('All Artists');
+    const [country, setCountry] = useState<string>('All Country');
     const [genres, setGenres] = useState<string>('All Genres');
     const artistCountry = useRef<any>(null);
     const artistGenres = useRef<any>(null);
-
-    const selectCountry = (item: string) => {
-        setCountry(item);
-        fetchArtistsCountryAndGenre(item, genres);
-    }
-    const selectGenre = (item: string) => {
-        setGenres(item);
-        fetchArtistsCountryAndGenre(country,item);
-    }
-
-    const searchArtists = (e: any) => {
-        e.preventDefault();
-        searchArtist(textField)
-    }
-
     useEffect(() => {
         /**
          * Alert if clicked on outside of element
@@ -79,7 +56,7 @@ function WrapArtistComponent({
         <div className="artists__content">
             <div className="artists__filter">
                 <div className="input__search">
-                    <form onSubmit={searchArtists}>
+                    <form>
                         <input type="search"
                             className="form-control rounded"
                             placeholder="Search..."
@@ -87,7 +64,7 @@ function WrapArtistComponent({
                             aria-describedby="search-addon"
                             onChange={(e) => { setTextField(e.target.value) }}
                         />
-                        <SearchIcon className="hd__icon__search" onClick={searchArtists}/>
+                        <SearchIcon className="hd__icon__search"/>
                     </form>
                 </div>
                 <div className="artists__filter_wrap">
@@ -104,9 +81,9 @@ function WrapArtistComponent({
                             className={filterCountry ? 'list__filter visibility_visible' : 'list__filter visibility_hidden'}
                         >
                             <ul>
-                                {artistsCountry.map((item) => {
+                                {albumCountry.map((item) => {
                                     return (
-                                        <li onClick={() => { selectCountry(item) }}>{item}</li>
+                                        <li onClick={() => { }}>{item}</li>
                                     )
                                 })}
                             </ul>
@@ -125,9 +102,9 @@ function WrapArtistComponent({
                             className={filterGenres ? 'list__filter visibility_visible' : 'list__filter visibility_hidden'}
                         >
                             <ul>
-                                {artistsGenres.map((genres) => {
+                                {albumGenres.map((genres) => {
                                     return (
-                                        <li onClick={() => { selectGenre(genres) }}>{genres}</li>
+                                        <li onClick={() => {  }}>{genres}</li>
                                     )
                                 })}
                             </ul>
@@ -138,4 +115,4 @@ function WrapArtistComponent({
         </div>
     )
 }
-export default WrapArtistComponent;
+export default WrapAlbumComponent;

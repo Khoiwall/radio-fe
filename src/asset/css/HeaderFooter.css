@@ -1,33 +1,43 @@
-.ft__background{
+.ft__background {
     background-color: #222227;
 }
-.header{
-    position: fixed;
+.header {
+    position: sticky;
     top: 0px;
     background-color: #16151a;
     border-bottom: 1px solid #222227;
     min-height: 70px;
-    width: 100%;
-    max-width: 1274px;
+    width: inherit;
     z-index: 105;
 }
-.hd__nav__text a{
+.header__mobile{
+    position: sticky;
+    top: 0px;
+    background-color: #16151a;
+    border-bottom: 1px solid #222227;
+    min-height: 70px;
+    width: inherit;
+    z-index: 105;
+    display: flex !important;
+    align-content: space-around;
+}
+.hd__nav__text a {
     font-size: 16px;
     color: #c0c0c0 !important;
     margin-right: 20px;
     text-decoration: none;
 }
-.hd__nav__text:hover a{
+.hd__nav__text:hover a {
     color: #25a56a !important;
 }
-.input__search{
+.input__search {
     margin-left: 48px;
     min-width: 300px;
     position: relative;
 }
-.input__search input{
+.input__search input {
     background-color: #222227;
-    border: 0px solid #fff ;
+    border: 0px solid #fff;
     padding: 0 60px 0 20px;
     width: 100%;
     height: 40px;
@@ -38,51 +48,51 @@
 .form-control:focus {
     background-color: #222227;
     color: #fff;
-    border: 0px solid #fff ;
+    border: 0px solid #fff;
     outline: none;
     box-shadow: 0 0 0 0;
 }
-.hd__icon__search{
+.hd__icon__search {
     position: absolute;
     top: 0px;
     right: 0px;
     margin: 8px 12px 8px 0px;
     cursor: pointer;
 }
-.hd__icon__search:hover{
+.hd__icon__search:hover {
     color: #25a56a !important;
 }
-.hd__sign_in a{
+.hd__sign_in a {
     font-size: 18px;
     color: #c0c0c0 !important;
     margin-right: 20px;
     text-decoration: none;
 }
-.hd__sign_in{
+.hd__sign_in {
     display: flex;
     align-items: center;
 }
-.hd__sign_in:hover a p{
+.hd__sign_in:hover a p {
     color: #fff !important;
 }
-.hd__sign_in:hover a svg{
+.hd__sign_in:hover a svg {
     color: #25a56a !important;
 }
-.hd__information{
+.hd__information {
     padding: 10px;
     position: relative;
     cursor: pointer;
     border-radius: 50px;
 }
-.hd__information:hover{
+.hd__information:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
-.hd__user_icon img{
+.hd__user_icon img {
     max-width: 30px;
     max-height: 30px;
     border-radius: 50%;
 }
-.hd__more_information{
+.hd__more_information {
     position: absolute;
     top: 52px;
     left: 0px;
@@ -93,51 +103,183 @@
     cursor: default;
     min-width: 124px;
 }
-.hd__more_information ul{
+.hd__more_information ul {
     padding: 0;
     margin: 0;
     list-style: none;
 }
-.hd__more_information ul li{
+.hd__more_information ul li {
     padding: 8px 12px;
 }
-.hd__setting a{
+.hd__setting a {
     color: #c0c0c0;
     text-decoration: none;
 }
-.hd__setting a:hover{
+.hd__setting a:hover {
     color: #25a56a;
 }
-.hd__sign_out:hover{
+.hd__sign_out:hover {
     color: #25a56a;
     cursor: pointer;
 }
-.hd__drop{
+.hd__drop {
     visibility: hidden;
     height: 0px;
     opacity: 0;
-    transition: opacity 0.2s ,height 0.2s;
+    transition: opacity 0.2s, height 0.2s;
 }
-.hd__information:hover .hd__drop{
+.hd__information:hover .hd__drop {
     visibility: visible;
     height: 136px;
     opacity: 1;
 }
 /*display*/
-.hd__display_flex{
+.hd__display_flex {
     display: flex;
-    align-items:center;
+    align-items: center;
 }
-.hd__gap_sign_in{
+.hd__gap_sign_in {
     gap: 8px;
 }
 /*margin*/
-.hd__margin_none{
+.hd__margin_none {
     margin: 0px;
 }
-.ft__margin_top{
+.ft__margin_top {
     margin-top: 32px;
 }
-.hd__margin_right_4{
+.hd__margin_right_4 {
     margin-right: 4px;
+}
+.header__icon_menu{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    cursor: pointer;
+}
+.header__icon_menu svg{
+    font-size:30px;
+}
+.header__icon_menu:hover svg{
+    color: #25a56a;
+}
+/*mobile*/
+.header__mobile a{
+    text-decoration: none;
+    display: flex;
+    justify-content:center;
+}
+.header__mobile_full_width{
+    width: 100%;
+}
+.header__mobile_margin_top_bottom_0{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+.header__mobile_margin_left_0{
+    margin-left: 0;
+}
+.header__mobile .css-mhc70k-MuiGrid-root{
+    align-items: center;
+    margin-top: 0px !important;
+}
+.sb__nav_mobile{
+    min-width: 280px;
+    overflow-y: auto;
+    background: #2a2a2a;
+    height: 100%;
+}
+.header__mobile_display_flex{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width: 100%;
+}
+.header__mobile_right_display_flex{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items:center
+}
+.header__mobile_search_icon{
+    cursor: pointer;
+}
+.header__mobile_search_icon:hover svg{
+    color: #25a56a;
+}
+.sb__nav_mobile_display_flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sb__nav_mobile_center{
+    width: 280px;
+    height:100vh;
+    position: absolute;
+    top: 0;
+}
+.sb__nav_mobile_text a{
+    color: #c0c0c0;
+    text-decoration: none;
+}
+.header__mobile_search{
+    position: absolute;
+    top: -71px;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #16151a;
+    border-bottom: 1px solid #222227;
+    transition: top 0.5s ease;
+}
+.true{
+    top: 0 !important;
+}
+.header__mobile_full_height{
+    height: 100%;
+}
+.header__mobile_padding_top_left{
+    padding-top: 6px;
+    padding-left: 8px;
+}
+.pointer{
+    cursor: pointer;
+}
+@media (min-width: 900px) {
+    .collapse:not(.show) {
+        display: flex;
+    }
+    .navbar-nav{
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 900px) {
+    .header__mobile {
+        display: none !important;
+    }
+    .header {
+        display: block !important;
+    }
+}
+
+@media (min-width: 100px) {
+    .header__mobile {
+        display: block;
+    }
+    .header {
+        display: none;
+    }
+
+    .header__mobile .collapse:not(.show) {
+        display: flex;
+    }
+    .header__mobile .navbar-nav{
+        flex-direction: column;
+    }
 }

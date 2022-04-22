@@ -24,7 +24,7 @@ interface NewReleasesType {
     playAlbum: (id: string) => void;
 }
 
-function NewReleasesChild({
+function AlbumComponent({
     Album,
     playAlbum
 }: NewReleasesType) {
@@ -149,4 +149,4 @@ function NewReleasesChild({
     )
 }
 
-export default NewReleasesChild;
+export default AlbumComponent;

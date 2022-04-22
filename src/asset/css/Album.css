@@ -1,0 +1,23 @@
+.album{
+    margin-top: 100px;
+}
+.album__title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+.artists__title h2{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    color: #fff;
+    font-size: 33px;
+    line-height: 140%;
+    margin-bottom: 0;
+    position: relative;
+}

@@ -31,11 +31,7 @@ function SignInComponent() {
                         alert(res.data.message);
                     }else{
                         localStorage.setItem('accessToken', res.data.accessToken);
-                        dispatch(userAction('login', {
-                            user: res.data.user,
-                            avatar: res.data.avatar,
-                            blance: res.data.blance
-                        }));
+                        dispatch(userAction('login',res.data));
                         history.push("/");
                     }
                 })

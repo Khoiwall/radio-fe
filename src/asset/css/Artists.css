@@ -37,8 +37,8 @@
     content: "";
     position: absolute;
     display: block;
-    left: -15px;
-    right: -15px;
+    left: -29px;
+    right: -29px;
     width: auto;
     top: 0;
     border-top: 1px solid #222227;
@@ -154,6 +154,10 @@
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
+.btn__style {
+    margin: 0px;
+    background-color: #222
+}
 /*media*/
 @media (min-width: 768px) {
     .artists__filter {
@@ -177,9 +181,33 @@
         border: none;
     }
 }
-@media (min-width: 576px) {
+@media (max-width: 900px) {
     .artists__filter:before {
-        left: -30px;
-        right: -29px;
+        left: -97px;
+        right: -97px;
+    }
+}
+@media (max-width: 768px) {
+    .artists__filter:before {
+        left: -104px;
+        right: -104px;
+    }
+}
+@media (max-width: 600px) {
+    .artists__filter:before {
+        left: -39px;
+        right: -39px;
+    }
+}
+@media (max-width: 576px) {
+    .artists__filter:before {
+        left: -12px;
+        right: -12px;
+    }
+}
+@media (max-width: 300px) {
+    .artists__filter:before {
+        left: -12px;
+        right: -12px;
     }
 }
