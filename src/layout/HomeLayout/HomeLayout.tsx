@@ -202,7 +202,7 @@ function HomeLayout({
                 <div className="hp__header">
                     <div className="hp__display_flex">
                         <h2 className="hp__title_h2">New Releases</h2>
-                        <Link to="/albums/new-releases">
+                        <Link to="/albums">
                             <div className="hp__see_all">
                                 <p>See all</p>
                                 <ArrowForwardIcon />

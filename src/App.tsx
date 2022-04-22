@@ -14,7 +14,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userAction } from './redux/actions/user';
 import { Endpoints } from './api/Endpoints';
-import {getWindowDimensions} from './util/getWindowDimensions';
+import { getWindowDimensions } from './util/getWindowDimensions';
 import { io } from 'socket.io-client';
 
 
@@ -52,12 +52,16 @@ function App() {
       <Router>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container>
-            <Grid item xl={2} lg={2} md={3} sm={12} xs={12} className="mobile">
-              <SideBar windowDimensions={windowDimensions}/>
-            </Grid>
+            {
+              windowDimensions.width > 900 ?
+                <Grid item xl={2} lg={2} md={3} sm={12} xs={12} className="mobile">
+                  <SideBar windowDimensions={windowDimensions} />
+                </Grid>
+                :
+                <PlayerMobileLayout windowDimensions={windowDimensions} />
+            }
             <Grid item xl={10} lg={10} md={9} sm={12} xs={12} className="app__display_flex app__overflow_y">
               <Header />
-              <PlayerMobileLayout windowDimensions={windowDimensions}/>
               <HeaderMobile />
               <Navigation />
               <Footer />

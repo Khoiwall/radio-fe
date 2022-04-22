@@ -1,8 +1,9 @@
 import React from 'react';
+import PirexChartLayout from '../../layout/PirexChartLayout/PirexChartLayout';
 
 function RankMusic(){
     return(
-        <div>RankMusic</div>
+        <PirexChartLayout/>
     )
 }
 
