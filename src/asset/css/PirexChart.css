@@ -26,3 +26,16 @@
     display: flex;
     align-items: center;
 }
+.chart__icon_player .chart__icon_style{
+    cursor: pointer;
+    color: #25a56a;
+}
+.chart__icon_player .chart__icon_style:hover{
+    opacity: .8;
+}
+.chart__main{
+    margin-top: 20px;
+}
+.chart__country{
+    margin-top: 20px;
+}

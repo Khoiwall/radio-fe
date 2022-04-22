@@ -109,3 +109,5 @@ function Chart({
         </li>
     )
 }
+
+export default Chart;

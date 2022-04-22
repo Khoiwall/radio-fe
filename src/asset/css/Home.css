@@ -510,9 +510,6 @@
     border-bottom: 1px solid #222227;
     height: 58px;
 }
-.charts .charts__track_item:nth-child(5){
-    border-bottom: 0px solid #222227 !important;
-}
 .charts .charts__track_number{
     color: #c0c0c0;
     font-size: 22px;
