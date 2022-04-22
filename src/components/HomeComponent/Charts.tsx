@@ -45,7 +45,7 @@ function Charts({
     return (
         <div className="charts">
             <ul className="charts__main_list">
-                {tracks.map((tracks, index) => {
+                {tracks.map((track, index) => {
                     return (
                         <li className="charts__track_item">
                             <span className="charts__track_number">{index + 1}</span>
@@ -57,16 +57,16 @@ function Charts({
                             </span>
                             <div 
                                 className="charts__track_img"
-                                onClick={() => playMusic(tracks,index)}
+                                onClick={() => playMusic(track,index)}
                             >
-                                <img src={tracks.mainImg} alt={tracks.nameSong} />
+                                <img src={track.mainImg} alt={track.nameSong} />
                                 <PlayArrowOutlinedIcon />
                             </div>
                             <div className="charts__track_title">
-                                <h4>{tracks.nameSong}</h4>
+                                <h4>{track.nameSong}</h4>
                                 <div className="charts__track_artist">
                                     {
-                                        tracks.artists.map((artist, index) => {
+                                        track.artists.map((artist, index) => {
                                             return (
                                                 <>
                                                     {
@@ -90,7 +90,7 @@ function Charts({
                                     }
                                 </div>
                             </div>
-                            <span className="charts__track_duration">{formatTimer(tracks.duration)}</span>
+                            <span className="charts__track_duration">{formatTimer(track.duration)}</span>
                         </li>
                     )
                 })}

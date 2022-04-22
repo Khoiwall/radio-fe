@@ -92,7 +92,7 @@ function TopTrack({
             <div className="hp__header">
                 <div className="hp__display_flex">
                     <h2 className="hp__title_h2">PirexCharts</h2>
-                    <Link to="/tracks/charts">
+                    <Link to="/rank">
                         <div className="hp__see_all">
                             <p>See all</p>
                             <ArrowForwardIcon />
