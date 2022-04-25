@@ -8,9 +8,15 @@ import axios from 'axios';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
+import { listen } from '../../redux/actions/listen';
+import {album} from '../../redux/actions/playAlbum';
+import { useDispatch } from 'react-redux';
 import { Endpoints } from '../../api/Endpoints';
+import {randomMusic} from '../../util/random';
 
 function PirexChartLayout() {
+
+    const dispatch = useDispatch();
 
     const [allTrack, setAllTrack] = useState<
         {
@@ -38,6 +44,31 @@ function PirexChartLayout() {
             .catch((err) => { console.log(err) })
     }
 
+    const playPirexWorldRankings = () =>{
+        const index =  randomMusic(allTrack.length);
+        window.localStorage.setItem('music', JSON.stringify(allTrack[index]));
+        window.localStorage.setItem('playlist', JSON.stringify(allTrack));
+        window.localStorage.setItem('indexSong', index.toString());
+        dispatch(listen('listen', allTrack[index]));
+        dispatch(album('playAlbum', allTrack));
+    }
+
+    const playPirexCountryRankings = (country: string)=>{
+        const trackCountry = allTrack.filter((track=>{
+            return track.country === country;
+        }))
+        const index =  randomMusic(trackCountry.length);
+        window.localStorage.setItem('music', JSON.stringify(trackCountry[index]));
+        window.localStorage.setItem('playlist', JSON.stringify(trackCountry));
+        window.localStorage.setItem('indexSong', index.toString());
+        dispatch(listen('listen', trackCountry[index]));
+        dispatch(album('playAlbum', trackCountry));
+    }
+
+    const seeTopMore = async() =>{
+        
+    }
+
     useEffect(() => {
         fetchAllTrack()
     }, [])
@@ -47,7 +78,10 @@ function PirexChartLayout() {
                 <div className="chart__title">
                     <h1>PirexChart</h1>
                 </div>
-                <div className="chart__icon_player">
+                <div 
+                    className="chart__icon_player" 
+                    onClick={playPirexWorldRankings}
+                >
                     <div className="chart__icon_style">
                         <PlayCircleFilledWhiteIcon />
                     </div>
@@ -74,6 +108,7 @@ function PirexChartLayout() {
                 <div className="artists__btn_margin">
                     <div
                         className="artists__btn_padidng artists__btn_background artists__btn"
+                        onClick={seeTopMore}
                     >
                         <span className="artists__btn_text">SEE TOP 100</span>
                     </div>
@@ -87,7 +122,10 @@ function PirexChartLayout() {
                                 <div className="chart__title">
                                     <h2>Viet Nam</h2>
                                 </div>
-                                <div className="chart__icon_player">
+                                <div 
+                                    className="chart__icon_player"
+                                    onClick={()=>{playPirexCountryRankings('VietNam')}}
+                                >
                                     <div className="chart__icon_style">
                                         <PlayCircleFilledWhiteIcon />
                                     </div>
@@ -114,7 +152,10 @@ function PirexChartLayout() {
                                 <div className="chart__title">
                                     <h2>US-UK</h2>
                                 </div>
-                                <div className="chart__icon_player">
+                                <div 
+                                    className="chart__icon_player"
+                                    onClick={()=>{playPirexCountryRankings('US-UK')}}
+                                >
                                     <div className="chart__icon_style">
                                         <PlayCircleFilledWhiteIcon />
                                     </div>
@@ -141,7 +182,10 @@ function PirexChartLayout() {
                                 <div className="chart__title">
                                     <h2>Korea</h2>
                                 </div>
-                                <div className="chart__icon_player">
+                                <div
+                                    className="chart__icon_player"
+                                    onClick={()=>{playPirexCountryRankings('Korea')}}
+                                >
                                     <div className="chart__icon_style">
                                         <PlayCircleFilledWhiteIcon />
                                     </div>

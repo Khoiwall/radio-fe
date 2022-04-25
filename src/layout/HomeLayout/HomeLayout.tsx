@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick-theme.css";
 import BannerComponent from '../../components/HomeComponent/Banner';
 import TopTrack from '../../components/HomeComponent/TopTrack';
 import NewReleasesChild from '../../components/HomeComponent/NewReleasesChild';
-import UpcomingEventsChild from '../../components/HomeComponent/UpcomingEventsChild';
 import TopArtistsChild from '../../components/HomeComponent/TopArtistsChild';
 import HotNewChild from '../../components/HomeComponent/HotNewsChild';
 import Grid from '@mui/material/Grid';
@@ -28,7 +27,7 @@ import { RootState } from '../../redux/reducers';
 import { userAction } from '../../redux/actions/user';
 import { io } from 'socket.io-client';
 import { useHistory } from "react-router-dom";
-import {settings,settingsArtist} from '../../util/slick';
+import { settings, settingsArtist } from '../../util/slick';
 
 interface HomeType {
     allTrack: {
@@ -225,35 +224,6 @@ function HomeLayout({
                             }
                         </Grid>
                     </Box>
-                </div>
-            </div>
-            <div className="hp__margin_top_32">
-                <div className="hp__header">
-                    <div className="hp__display_flex">
-                        <h2 className="hp__title_h2">Upcoming Events</h2>
-                        <Link to="/events">
-                            <div className="hp__see_all">
-                                <p>See all</p>
-                                <ArrowForwardIcon />
-                            </div>
-                        </Link>
-                    </div>
-                </div>
-                <div className="uec">
-                    <Slider ref={sliderRef} {...settings}>
-                        {
-                            events.map((event, key) => {
-                                return (
-                                    <UpcomingEventsChild event={event} />
-                                )
-                            })
-
-                        }
-                    </Slider>
-                    <div className="uec__prev_next">
-                        <div className="uec__prev" onClick={() => { slickPrev(0) }}><NavigateBeforeIcon /></div>
-                        <div className="uec__next" onClick={() => { slickNext(0) }}><NavigateNextIcon /></div>
-                    </div>
                 </div>
             </div>
             <div className="hp__margin_top_32">

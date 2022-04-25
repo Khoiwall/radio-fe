@@ -37,12 +37,6 @@ const tab = [
         imgHover: rankHover
     },
     {
-        name: 'Events',
-        url: '/events',
-        img: events,
-        imgHover: eventsHover
-    },
-    {
         name: 'News',
         url: '/news',
         img: news,
