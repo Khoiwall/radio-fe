@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../asset/css/Home.css';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import axios from 'axios';
+
 import { Link } from 'react-router-dom';
 import { formatTimer } from '../../util/timmer';
 import { listen } from '../../redux/actions/listen';
-import {album} from '../../redux/actions/playAlbum';
+import { album } from '../../redux/actions/playAlbum';
 import { useDispatch } from 'react-redux';
+import { userAction } from '../../redux/actions/user';
+import { Endpoints } from '../../api/Endpoints';
+import { RootState } from '../../redux/reducers';
+import { useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
 
 interface Charts {
     tracks: {
@@ -32,8 +39,10 @@ interface Charts {
 function Charts({
     tracks
 }: Charts) {
-
+    const user = useSelector((state: RootState) => state.user);
     const dispatch = useDispatch();
+    const history = useHistory();
+    const [indexRender, setIndexRender] = useState<number>(0)
 
     const playMusic = (track: any, index: number) => {
         window.localStorage.setItem('music', JSON.stringify(track));
@@ -42,6 +51,38 @@ function Charts({
         dispatch(listen('listen', track));
         dispatch(album('playAlbum', tracks));
     }
+
+    const likeTrack = async (idTrack: string, like: number) => {
+        if (Object.keys(user).length === 0) {
+            history.push("/sign-in");
+        } else {
+            setIndexRender(indexRender + 1);
+            user.likeTracks.push(idTrack);
+            dispatch(userAction('likeAndDislike', user));
+            await axios.put(`${Endpoints}/api/track/like-track`, { idTrack, like }, {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("accessToken")
+                }
+            })
+                .then(res => { console.log(res.data.message) })
+                .catch(err => { console.log(err) })
+        }
+    }
+
+    const dislikeTrack = async (idTrack: string, like: number, indexTrackInUser: number) => {
+        setIndexRender(indexRender + 1)
+        user.likeTracks.splice(indexTrackInUser, 1)
+        dispatch(userAction('likeAndDislike', user));
+        await axios.put(`${Endpoints}/api/track/dislike-track`, { idTrack, like }, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("accessToken")
+            }
+        })
+            .then(res => { console.log(res.data.message) })
+            .catch(err => { console.log(err) })
+    }
+
+    useEffect(() => { }, [indexRender])
     return (
         <div className="charts">
             <ul className="charts__main_list">
@@ -55,9 +96,9 @@ function Charts({
                                 </span>
                                 <span>{index + 1}</span>
                             </span>
-                            <div 
+                            <div
                                 className="charts__track_img"
-                                onClick={() => playMusic(track,index)}
+                                onClick={() => playMusic(track, index)}
                             >
                                 <img src={track.mainImg} alt={track.nameSong} />
                                 <PlayArrowOutlinedIcon />
@@ -90,7 +131,28 @@ function Charts({
                                     }
                                 </div>
                             </div>
-                            <span className="charts__track_duration">{formatTimer(track.duration)}</span>
+                            <div className="chart__time_heart">
+                                {
+                                    Object.keys(user).length === 0 ? (
+                                        <span className="chart__icon_heart" onClick={() => likeTrack(track.idTrack, track.like)}>
+                                            <FavoriteIcon />
+                                        </span>
+                                    ) : (
+                                        user.likeTracks.indexOf(track.idTrack) !== -1 ?
+                                            (
+                                                <span className="chart__icon_heart liked" onClick={() => dislikeTrack(track.idTrack, track.like, user.likeTracks.indexOf(track.idTrack))}>
+                                                    <FavoriteIcon />
+                                                </span>
+                                            ) :
+                                            (
+                                                <span className="chart__icon_heart" onClick={() => likeTrack(track.idTrack, track.like)}>
+                                                    <FavoriteIcon />
+                                                </span>
+                                            )
+                                    )
+                                }
+                                <span className="charts__track_duration">{formatTimer(track.duration)}</span>
+                            </div>
                         </li>
                     )
                 })}

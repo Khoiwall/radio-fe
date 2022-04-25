@@ -55,9 +55,9 @@ function ArtistComponent({
         if (Object.keys(user).length === 0) {
             history.push("/sign-in");
         } else {
-            socket.emit("dislike-or-like-artist", allArtistsComponent, artist.idArtists,0)
+            socket.emit("dislike-or-like-artist", allArtistsComponent, artist.idArtists, 0)
             user.likeArtists.push(artist.idArtists);
-            dispatch(userAction('likeArtist', user));
+            dispatch(userAction('likeAndDislike', user));
             // setChangeUser(changeUser + 1);
             await axios.put(`${Endpoints}/api/artist/like-artist`, artist, {
                 headers: {
@@ -70,9 +70,9 @@ function ArtistComponent({
     }
 
     const dislikeArtist = async (artist: any, index: number) => {
-        socket.emit("dislike-or-like-artist", allArtistsComponent, artist.idArtists,1)
+        socket.emit("dislike-or-like-artist", allArtistsComponent, artist.idArtists, 1)
         user.likeArtists.splice(index, 1)
-        dispatch(userAction('likeArtist', user));
+        dispatch(userAction('likeAndDislike', user));
         // setChangeUser(changeUser + 1);
         await axios.put(`${Endpoints}/api/artist/dislike-artist`, artist, {
             headers: {
@@ -128,7 +128,6 @@ function ArtistComponent({
                                                             </div>
                                                         )
                                                 )
-
                                             }
                                             <div className="nrc__album_stat">
                                                 <span className="nrc__album_stat_number_song">

@@ -138,7 +138,7 @@ function HomeLayout({
         } else {
             socket.emit("dislike-or-like-artist", allArtistsComponent, artist.idArtists, 0)
             user.likeArtists.push(artist.idArtists);
-            dispatch(userAction('likeArtist', user));
+            dispatch(userAction('likeAndDislike', user));
             await axios.put(`${Endpoints}/api/artist/like-artist`, artist, {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("accessToken")
@@ -152,7 +152,7 @@ function HomeLayout({
     const dislikeArtist = async (artist: any, index: number) => {
         socket.emit("dislike-or-like-artist", allArtistsComponent, artist.idArtists, 1)
         user.likeArtists.splice(index, 1)
-        dispatch(userAction('likeArtist', user));
+        dispatch(userAction('likeAndDislike', user));
         await axios.put(`${Endpoints}/api/artist/dislike-artist`, artist, {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("accessToken")

@@ -9,10 +9,11 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
 import { listen } from '../../redux/actions/listen';
-import {album} from '../../redux/actions/playAlbum';
-import { useDispatch } from 'react-redux';
+import { album } from '../../redux/actions/playAlbum';
+import { useDispatch, useSelector } from 'react-redux';
 import { Endpoints } from '../../api/Endpoints';
-import {randomMusic} from '../../util/random';
+import { randomMusic } from '../../util/random';
+import { RootState } from '../../redux/reducers';
 
 function PirexChartLayout() {
 
@@ -37,6 +38,8 @@ function PirexChartLayout() {
             likeOfWeek: number,
         }[]
     >([]);
+    const [length, setLength] = useState<number>(10);
+    const [indexRender, setIndexRender] = useState<number>(0);
 
     const fetchAllTrack = async () => {
         return axios.get(`${Endpoints}/api/track`)
@@ -44,8 +47,8 @@ function PirexChartLayout() {
             .catch((err) => { console.log(err) })
     }
 
-    const playPirexWorldRankings = () =>{
-        const index =  randomMusic(allTrack.length);
+    const playPirexWorldRankings = () => {
+        const index = randomMusic(allTrack.length);
         window.localStorage.setItem('music', JSON.stringify(allTrack[index]));
         window.localStorage.setItem('playlist', JSON.stringify(allTrack));
         window.localStorage.setItem('indexSong', index.toString());
@@ -53,11 +56,11 @@ function PirexChartLayout() {
         dispatch(album('playAlbum', allTrack));
     }
 
-    const playPirexCountryRankings = (country: string)=>{
-        const trackCountry = allTrack.filter((track=>{
+    const playPirexCountryRankings = (country: string) => {
+        const trackCountry = allTrack.filter((track => {
             return track.country === country;
         }))
-        const index =  randomMusic(trackCountry.length);
+        const index = randomMusic(trackCountry.length);
         window.localStorage.setItem('music', JSON.stringify(trackCountry[index]));
         window.localStorage.setItem('playlist', JSON.stringify(trackCountry));
         window.localStorage.setItem('indexSong', index.toString());
@@ -65,21 +68,28 @@ function PirexChartLayout() {
         dispatch(album('playAlbum', trackCountry));
     }
 
-    const seeTopMore = async() =>{
-        
+    const render = () => {
+        setIndexRender(indexRender + 1)
+    }
+
+    const seeTopMore = () => {
+        setLength(100)
     }
 
     useEffect(() => {
         fetchAllTrack()
     }, [])
+
+    useEffect(() => { }, [length])
+    useEffect(() => { }, [indexRender])
     return (
         <div className="chart container">
             <div className="chart__display_flex">
                 <div className="chart__title">
                     <h1>PirexChart</h1>
                 </div>
-                <div 
-                    className="chart__icon_player" 
+                <div
+                    className="chart__icon_player"
                     onClick={playPirexWorldRankings}
                 >
                     <div className="chart__icon_style">
@@ -91,12 +101,13 @@ function PirexChartLayout() {
                 <div className="charts">
                     <ul className="charts__main_list">
                         {
-                            allTrack.slice(0, 10).map((track, index) => {
+                            allTrack.slice(0, length).map((track, index) => {
                                 return (
                                     <Chart
                                         track={track}
                                         tracks={allTrack}
                                         index={index}
+                                        render={render}
                                     />
                                 )
                             })
@@ -104,16 +115,21 @@ function PirexChartLayout() {
                     </ul>
                 </div>
             </div>
-            <div className="artists__btn_flex">
-                <div className="artists__btn_margin">
-                    <div
-                        className="artists__btn_padidng artists__btn_background artists__btn"
-                        onClick={seeTopMore}
-                    >
-                        <span className="artists__btn_text">SEE TOP 100</span>
+            {
+                length === 10
+                    ?
+                    <div className="artists__btn_flex">
+                        <div className="artists__btn_margin">
+                            <div
+                                className="artists__btn_padidng artists__btn_background artists__btn"
+                                onClick={seeTopMore}
+                            >
+                                <span className="artists__btn_text">SEE TOP 100</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    : null
+            }
             <div className="chart__country">
                 <Box sx={{ width: '100%' }}>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -122,9 +138,9 @@ function PirexChartLayout() {
                                 <div className="chart__title">
                                     <h2>Viet Nam</h2>
                                 </div>
-                                <div 
+                                <div
                                     className="chart__icon_player"
-                                    onClick={()=>{playPirexCountryRankings('VietNam')}}
+                                    onClick={() => { playPirexCountryRankings('VietNam') }}
                                 >
                                     <div className="chart__icon_style">
                                         <PlayCircleFilledWhiteIcon />
@@ -141,6 +157,7 @@ function PirexChartLayout() {
                                                 track={track}
                                                 tracks={allTrack}
                                                 index={index}
+                                                render={render}
                                             />
                                         )
                                     })
@@ -152,9 +169,9 @@ function PirexChartLayout() {
                                 <div className="chart__title">
                                     <h2>US-UK</h2>
                                 </div>
-                                <div 
+                                <div
                                     className="chart__icon_player"
-                                    onClick={()=>{playPirexCountryRankings('US-UK')}}
+                                    onClick={() => { playPirexCountryRankings('US-UK') }}
                                 >
                                     <div className="chart__icon_style">
                                         <PlayCircleFilledWhiteIcon />
@@ -171,6 +188,7 @@ function PirexChartLayout() {
                                                 track={track}
                                                 tracks={allTrack}
                                                 index={index}
+                                                render={render}
                                             />
                                         )
                                     })
@@ -184,7 +202,7 @@ function PirexChartLayout() {
                                 </div>
                                 <div
                                     className="chart__icon_player"
-                                    onClick={()=>{playPirexCountryRankings('Korea')}}
+                                    onClick={() => { playPirexCountryRankings('Korea') }}
                                 >
                                     <div className="chart__icon_style">
                                         <PlayCircleFilledWhiteIcon />
@@ -201,6 +219,7 @@ function PirexChartLayout() {
                                                 track={track}
                                                 tracks={allTrack}
                                                 index={index}
+                                                render={render}
                                             />
                                         )
                                     })
