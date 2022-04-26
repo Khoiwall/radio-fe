@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HomeLayout from '../../layout/HomeLayout/HomeLayout';
+import LoaddingHomeLayout from '../../layout/HomeLayout/LoaddingHomeLayout';
 import axios from 'axios';
 import { Endpoints } from '../../api/Endpoints';
 
@@ -142,7 +143,7 @@ function Home() {
                         allAlbum={allAlbum}
                         allArtists={allArtists}
                         allNews={allNews}
-                    /> : <h1>Loadding</h1>
+                    /> : <LoaddingHomeLayout />
             }
         </>
     )
