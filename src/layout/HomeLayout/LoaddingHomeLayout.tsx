@@ -298,9 +298,11 @@ function LoaddingHomeLayout() {
                             {
                                 loaddingLoop().slice(0, 3).map(() => {
                                     return (
-                                        <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
-                                            <Skeleton width={395} height={377} />
-                                        </SkeletonTheme>
+                                        <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
+                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                <Skeleton height={413} />
+                                            </SkeletonTheme>
+                                        </Grid>
                                     )
                                 })
                             }

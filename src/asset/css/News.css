@@ -1,0 +1,27 @@
+.news {
+    margin-top: 100px;
+}
+.news__title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin-right: 6px;
+}
+.news__title h1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    color: #fff;
+    font-size: 33px;
+    line-height: 140%;
+    margin-bottom: 0;
+    position: relative;
+}
+.new__margin_top_30 {
+    margin-top: 30px;
+}
