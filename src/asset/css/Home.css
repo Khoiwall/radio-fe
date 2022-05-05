@@ -732,7 +732,7 @@
 }
 .carousel-control-next,
 .carousel-control-prev {
-    z-index: 150 !important;
+    z-index: 100 !important;
 }
 .loadding__margin_top {
     margin-top: 32px;

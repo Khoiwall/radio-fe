@@ -40,7 +40,7 @@ function NewReleasesChild({
                 <div
                     className="nrc__play_album"
                 >
-                    <PlayArrowOutlinedIcon onClick={()=>{playAlbumChild(Album.idAlbum)}}/>
+                    <PlayArrowOutlinedIcon onClick={() => { playAlbumChild(Album.idAlbum) }} />
                 </div>
                 <div className="nrc__album_stat">
                     <span className="nrc__album_stat_number_song">
@@ -54,7 +54,7 @@ function NewReleasesChild({
                 </div>
             </div>
             <div className="nrc__album_title">
-                <Link to={'/album/' + Album.idAlbum}>
+                <Link to={'/albums/' + Album.idAlbum}>
                     <h3>{Album.name}</h3>
                 </Link>
                 <div className="nrc__album_name_singer">

@@ -1,5 +1,10 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    Redirect,
+} from "react-router-dom";
 import Artists from '../screens/Artists/Artists';
 import Events from '../screens/Events/Events';
 import Home from '../screens/Home/Home';
@@ -9,6 +14,8 @@ import Store from '../screens/Store/Store';
 import Albums from '../screens/Albums/Albums';
 import SignIn from '../screens/SignIn/SignIn';
 import SignUp from '../screens/SignUp/SignUp';
+import NotFound from '../screens/404/NotFound';
+import DetailAlbum from '../screens/DetailAlbum/DetailAlbum';
 
 import { RootState } from '../redux/reducers';
 import { useSelector } from 'react-redux';
@@ -26,6 +33,12 @@ function Navigation() {
             </Route>
 
             {/* everyone */}
+            <Route exact path="/">
+                <Home />
+            </Route>
+            <Route path='/albums/:idAlbum'>
+                <DetailAlbum />
+            </Route>
             <Route path='/albums'>
                 <Albums />
             </Route>
@@ -44,8 +57,8 @@ function Navigation() {
             <Route path='/artists'>
                 <Artists />
             </Route>
-            <Route path='/'>
-                <Home />
+            <Route path='*'>
+                <NotFound />
             </Route>
         </Switch>
     )
