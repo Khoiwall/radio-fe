@@ -117,7 +117,7 @@ function HomeLayout({
         like: number,
         type: string[]
     }[]>(allArtists);
-    const socket = io('http://localhost:3001');
+    const socket = io();
 
 
     const playAlbum = (id: string) => {

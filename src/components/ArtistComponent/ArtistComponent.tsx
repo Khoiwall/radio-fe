@@ -37,7 +37,7 @@ function ArtistComponent({
     let history = useHistory();
     const dispatch = useDispatch();
 
-    const socket = io('http://localhost:3001');
+    const socket = io();
     const [allArtistsComponent, setAllArtistsComponent] = useState<{
         idArtists: string,
         name: string,
