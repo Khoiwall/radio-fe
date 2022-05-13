@@ -121,7 +121,7 @@ function DetailAlbumLayout() {
     >([]);
     const [indexRender, setIndexRender] = useState<number>(0);
     const user = useSelector((state: RootState) => state.user);
-    const socket = io();
+    const socket = io('https://be-radio.herokuapp.com');
     const dispatch = useDispatch();
 
     const fecthAlbum = async () => {

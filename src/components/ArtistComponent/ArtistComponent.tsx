@@ -37,7 +37,7 @@ function ArtistComponent({
     let history = useHistory();
     const dispatch = useDispatch();
 
-    const socket = io();
+    const socket = io('https://be-radio.herokuapp.com');
     const [allArtistsComponent, setAllArtistsComponent] = useState<{
         idArtists: string,
         name: string,

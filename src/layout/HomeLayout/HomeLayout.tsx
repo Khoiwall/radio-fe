@@ -117,7 +117,7 @@ function HomeLayout({
         like: number,
         type: string[]
     }[]>(allArtists);
-    const socket = io();
+    const socket = io('https://be-radio.herokuapp.com');
 
 
     const playAlbum = (id: string) => {
