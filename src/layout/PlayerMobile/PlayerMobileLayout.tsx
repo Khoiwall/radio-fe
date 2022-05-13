@@ -183,7 +183,7 @@ function PlayerMobile({
     return (
         <>
             {
-                windowDimensions.width < 900 ?
+                windowDimensions.width < 900 && Object.keys(musicPlayer).length !== 0 ?
                     (
                         <div className="player__mobile">
                             <div className="player__mobile_fixed">

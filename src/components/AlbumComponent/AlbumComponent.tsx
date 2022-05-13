@@ -22,10 +22,18 @@ interface NewReleasesType {
         image: string
     };
     playAlbum: (id: string) => void;
+    grid: {
+        xl: number,
+        lg: number,
+        md: number,
+        sm: number,
+        xs: number,
+    }
 }
 
 function AlbumComponent({
     Album,
+    grid,
     playAlbum
 }: NewReleasesType) {
     const dispatch = useDispatch();
@@ -34,7 +42,7 @@ function AlbumComponent({
         playAlbum(id);
     }
     return (
-        <Grid className="nrc__album" item xl={2} lg={2} md={3} sm={4} xs={6}>
+        <Grid className="nrc__album" item xl={grid.xl} lg={grid.lg} md={grid.md} sm={grid.sm} xs={grid.xs}>
             <div className="nrc__album_cover">
                 <img src={Album.image} alt={Album.name} />
                 <div

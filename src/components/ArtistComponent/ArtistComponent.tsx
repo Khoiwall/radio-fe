@@ -87,7 +87,6 @@ function ArtistComponent({
     useEffect(() => {
         socket.on('resend-dislike-or-like-artist', (artists) => {
             setAllArtistsComponent(artists);
-            console.log('123')
         })
     }, [])
     return (

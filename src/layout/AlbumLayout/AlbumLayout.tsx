@@ -35,6 +35,14 @@ interface AlbumType {
     }[];
 }
 
+const grid = {
+    xl: 2,
+    lg: 2,
+    md: 3,
+    sm: 4,
+    xs: 6
+}
+
 function AlbumLayout({
     allTrack
 }: AlbumType) {
@@ -167,6 +175,7 @@ function AlbumLayout({
                                                 <AlbumComponent
                                                     Album={album}
                                                     playAlbum={playAlbum}
+                                                    grid={grid}
                                                 />
                                             )
                                         })
