@@ -1,3 +1,3 @@
-const Endpoints = 'http://localhost:5000'
+const Endpoints = 'https://be-radio.herokuapp.com'
 
-export {Endpoints};
+export { Endpoints };
