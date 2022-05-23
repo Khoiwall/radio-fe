@@ -22,10 +22,10 @@ function LoaddingArtistComponent() {
                         loadingLoop().map(() => {
                             return (
                                 <Grid item xl={2} lg={2} md={4} sm={4} xs={6}>
-                                    <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                    <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                         <Skeleton width={190} height={171} />
                                     </SkeletonTheme>
-                                    <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                    <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                         <Skeleton width={120} />
                                     </SkeletonTheme>
                                 </Grid>

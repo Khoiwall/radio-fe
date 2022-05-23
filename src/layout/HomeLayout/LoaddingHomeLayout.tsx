@@ -20,7 +20,7 @@ function LoaddingHomeLayout() {
     return (
         <div className="container">
             <div className="hp__margin_top_32">
-                <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                     <Skeleton width={1216} height={460} />
                 </SkeletonTheme>
             </div>
@@ -43,13 +43,13 @@ function LoaddingHomeLayout() {
                                 loaddingLoop().map(() => {
                                     return (
                                         <Grid className="nrc__album" item xl={2} lg={2} md={3} sm={4} xs={6}>
-                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                 <Skeleton width={190} height={172} />
                                             </SkeletonTheme>
-                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                 <Skeleton width={130} height={19} />
                                             </SkeletonTheme>
-                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                 <Skeleton width={70} height={18} />
                                             </SkeletonTheme>
                                         </Grid>
@@ -78,10 +78,10 @@ function LoaddingHomeLayout() {
                             loaddingLoop().slice(0, 6).map(() => {
                                 return (
                                     <Grid className="nrc__album" item xl={2} lg={2} md={3} sm={4} xs={6}>
-                                        <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                        <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                             <Skeleton width={190} height={172} />
                                         </SkeletonTheme>
-                                        <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                        <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                             <Skeleton width={130} height={19} />
                                         </SkeletonTheme>
                                     </Grid>
@@ -106,44 +106,44 @@ function LoaddingHomeLayout() {
                                                 <div className="loadding__display_flex">
                                                     <div className="loadding__left">
                                                         <span className="loadding__rank_margin">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={20} height={33} />
                                                             </SkeletonTheme>
                                                         </span>
                                                         <div className="column_center loadding__rank_margin">
                                                             <span>
-                                                                <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                                <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                     <Skeleton width={20} height={20} />
                                                                 </SkeletonTheme>
                                                             </span>
                                                             <span>
-                                                                <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                                <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                     <Skeleton width={8} height={21} />
                                                                 </SkeletonTheme>
                                                             </span>
                                                         </div>
                                                         <div className="loadding__img loadding__rank_margin">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={48} height={48} />
                                                             </SkeletonTheme>
                                                         </div>
                                                         <div className="column">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={150} height={24} />
                                                             </SkeletonTheme>
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={120} height={18} />
                                                             </SkeletonTheme>
                                                         </div>
                                                     </div>
                                                     <div className="loadding__right">
                                                         <div className="loadding__icon loadding__rank_margin">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={24} height={24} />
                                                             </SkeletonTheme>
                                                         </div>
                                                         <div className="loadding__timer">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={31} height={18} />
                                                             </SkeletonTheme>
                                                         </div>
@@ -167,44 +167,44 @@ function LoaddingHomeLayout() {
                                                 <div className="loadding__display_flex">
                                                     <div className="loadding__left">
                                                         <span className="loadding__rank_margin">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={20} height={33} />
                                                             </SkeletonTheme>
                                                         </span>
                                                         <div className="column_center loadding__rank_margin">
                                                             <span>
-                                                                <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                                <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                     <Skeleton width={20} height={20} />
                                                                 </SkeletonTheme>
                                                             </span>
                                                             <span>
-                                                                <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                                <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                     <Skeleton width={8} height={21} />
                                                                 </SkeletonTheme>
                                                             </span>
                                                         </div>
                                                         <div className="loadding__img loadding__rank_margin">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={48} height={48} />
                                                             </SkeletonTheme>
                                                         </div>
                                                         <div className="column">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={150} height={24} />
                                                             </SkeletonTheme>
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={120} height={18} />
                                                             </SkeletonTheme>
                                                         </div>
                                                     </div>
                                                     <div className="loadding__right">
                                                         <div className="loadding__icon loadding__rank_margin">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={24} height={24} />
                                                             </SkeletonTheme>
                                                         </div>
                                                         <div className="loadding__timer">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={31} height={18} />
                                                             </SkeletonTheme>
                                                         </div>
@@ -228,44 +228,44 @@ function LoaddingHomeLayout() {
                                                 <div className="loadding__display_flex">
                                                     <div className="loadding__left">
                                                         <span className="loadding__rank_margin">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={20} height={33} />
                                                             </SkeletonTheme>
                                                         </span>
                                                         <div className="column_center loadding__rank_margin">
                                                             <span>
-                                                                <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                                <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                     <Skeleton width={20} height={20} />
                                                                 </SkeletonTheme>
                                                             </span>
                                                             <span>
-                                                                <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                                <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                     <Skeleton width={8} height={21} />
                                                                 </SkeletonTheme>
                                                             </span>
                                                         </div>
                                                         <div className="loadding__img loadding__rank_margin">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={48} height={48} />
                                                             </SkeletonTheme>
                                                         </div>
                                                         <div className="column">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={150} height={24} />
                                                             </SkeletonTheme>
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={120} height={18} />
                                                             </SkeletonTheme>
                                                         </div>
                                                     </div>
                                                     <div className="loadding__right">
                                                         <div className="loadding__icon loadding__rank_margin">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={24} height={24} />
                                                             </SkeletonTheme>
                                                         </div>
                                                         <div className="loadding__timer">
-                                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                                 <Skeleton width={31} height={18} />
                                                             </SkeletonTheme>
                                                         </div>
@@ -299,7 +299,7 @@ function LoaddingHomeLayout() {
                                 loaddingLoop().slice(0, 3).map(() => {
                                     return (
                                         <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
-                                            <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                            <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                                 <Skeleton height={413} />
                                             </SkeletonTheme>
                                         </Grid>

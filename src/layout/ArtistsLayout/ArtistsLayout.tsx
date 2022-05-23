@@ -6,7 +6,7 @@ import WrapArtistComponent from '../../components/ArtistComponent/WrapArtistComp
 import ArtistComponent from '../../components/ArtistComponent/ArtistComponent';
 import LoaddingArtistComponent from '../../components/ArtistComponent/LoaddingArtistComponent';
 import axios from 'axios';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 import { Endpoints } from '../../api/Endpoints';
 
@@ -153,7 +153,7 @@ function ArtistsLayout() {
                         <LoaddingArtistComponent />
                         <div className="artists__btn_flex">
                             <div className="artists__btn_margin">
-                                <SkeletonTheme baseColor="#c0c0c0" highlightColor="#fff">
+                                <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
                                     <Skeleton width={160} height={40} />
                                 </SkeletonTheme>
                             </div>

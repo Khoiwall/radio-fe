@@ -4,6 +4,9 @@ import WrapAlbumLoadingComponent from '../../components/AlbumComponent/WrapAlbum
 import axios from 'axios';
 
 import { Endpoints } from '../../api/Endpoints';
+import LoaddingArtistComponent from '../../components/ArtistComponent/LoaddingArtistComponent';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+
 function Albums() {
     let [index, setIndex] = useState(0)
     const [allTrack, setAllTrack] = useState<
@@ -48,6 +51,14 @@ function Albums() {
                             <h1>Album</h1>
                         </div>
                         <WrapAlbumLoadingComponent />
+                        <LoaddingArtistComponent />
+                        <div className="artists__btn_flex">
+                            <div className="artists__btn_margin">
+                                <SkeletonTheme baseColor="#282727" highlightColor="#2e2e2e">
+                                    <Skeleton width={160} height={40} />
+                                </SkeletonTheme>
+                            </div>
+                        </div>
                     </div>
             }
         </>
